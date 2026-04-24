@@ -53,16 +53,26 @@
   <div class="notice-card">
     <div class="notice-header">
       <span class="notice-icon">❓</span>
-      <h3>자주 묻는 업무 Q&A</h3>
+      <h3 id="faq-title">자주 묻는 업무 Q&A</h3>
+      <button id="faq-back-btn" class="back-btn" onclick="showCategoryMenu()" style="display: none;">← 뒤로</button>
     </div>
     
-    <div id="faq-list" class="faq-container"></div>
+    <div id="faq-categories" class="faq-category-grid">
+      <div class="cate-item" onclick="filterFAQ('출결')">📂 출결</div>
+      <div class="cate-item" onclick="filterFAQ('학적')">📋 학적</div>
+      <div class="cate-item" onclick="filterFAQ('복무')">⏰ 복무</div>
+      <div class="cate-item" onclick="filterFAQ('규정')">📜 규정</div>
+      <div class="cate-item" onclick="filterFAQ('생기부')">📝 생기부</div>
+    </div>
+
+    <div id="faq-list" class="faq-container" style="display: none;"></div>
 
     <div class="notice-footer">
-      <button class="close-footer-btn" onclick="toggleFAQ()">닫기</button>
+      <button class="close-footer-btn" onclick="toggleFAQ()">창 닫기</button>
     </div>
   </div>
 </section>
+
 
     <section class="card-grid">
       <a class="card" href="https://padlet.com/tsyche1/2026-erggj7epwnxe87w6" target="_blank">
