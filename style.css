@@ -336,3 +336,49 @@ body::before {
   color: #3b82f6;
 }
 
+/* 카테고리 그리드 레이아웃 */
+.faq-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2열로 배치 */
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.cate-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cate-item:hover {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+/* 뒤로가기 버튼 */
+.back-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* 질문지 리스트 여백 조정 */
+.faq-container {
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
