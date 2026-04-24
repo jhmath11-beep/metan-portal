@@ -287,3 +287,52 @@ body::before {
   transform: translateY(-2px);
 }
 
+/* --- 업무 Q&A 전용 스타일 --- */
+
+/* 질문들이 담기는 컨테이너 */
+.faq-container {
+  margin-top: 10px;
+}
+
+/* 각 질문 항목 (아코디언) */
+.faq-item {
+  border-bottom: 1px solid #f3f4f6;
+  padding: 12px 0;
+}
+
+/* 질문 제목 부분 */
+.faq-item summary {
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  list-style: none; /* 기본 화살표 숨기기 */
+  position: relative;
+  padding-left: 25px;
+}
+
+/* 질문 앞에 'Q.' 표시 달기 */
+.faq-item summary::before {
+  content: 'Q.';
+  position: absolute;
+  left: 0;
+  color: #3b82f6; /* 매탄중 상징색과 어울리는 파란색 */
+  font-weight: bold;
+}
+
+/* 답변 내용 박스 */
+.faq-item p {
+  padding: 12px 25px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-top: 8px;
+  line-height: 1.6;
+  border-left: 3px solid #3b82f6; /* 답변 왼쪽에 포인트 선 */
+}
+
+/* 질문을 클릭해서 열었을 때 질문 색상 변경 */
+.faq-item[open] summary {
+  color: #3b82f6;
+}
+
