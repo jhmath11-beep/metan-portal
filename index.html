@@ -16,9 +16,9 @@
 
   <main class="wrap">
       <section class="quick-links">
-    <a href="#" onclick="toggleNotice(); return false;">공지사항</a>
-    <a href="#" onclick="alert('준비중입니다.'); return false;">문의하기</a>
-  </section>
+  <a href="#" onclick="toggleNotice(); return false;">공지사항(일정 등)</a>
+  <a href="#" onclick="toggleFAQ(); return false;">무엇이든 물어보매(FAQ)</a>
+</section>
 
   <main class="wrap">
     
@@ -51,6 +51,20 @@
   </div>
 </section>
 
+<section id="faq" class="notice-section" style="display: none;">
+  <div class="notice-card">
+    <div class="notice-header">
+      <span class="notice-icon">❓</span>
+      <h3>자주 묻는 업무 Q&A</h3>
+    </div>
+    
+    <div id="faq-list" class="faq-container"></div>
+
+    <div class="notice-footer">
+      <button class="close-footer-btn" onclick="toggleFAQ()">닫기</button>
+    </div>
+  </div>
+</section>
 
     <section class="card-grid">
       <a class="card" href="https://padlet.com/tsyche1/2026-erggj7epwnxe87w6" target="_blank">
@@ -106,6 +120,42 @@ function toggleNotice() {
     notice.style.display = 'none';
   }
 }
+// 1. 질문 데이터 (내용을 여기서 마음껏 수정/추가하세요)
+const faqData = [
+  { q: "병가나 조퇴 신청은 언제까지 하나요?", a: "전날 퇴근 전까지 나이스 신청 후 부장님께 공유해 주세요." },
+  { q: "공문 번호는 어디서 확인하나요?", a: "교무부 내부결재 대장의 [공문번호부여] 항목을 확인하세요." },
+  { q: "복사기 토너가 떨어졌어요.", a: "행정실 물품 담당 선생님께 말씀하시거나 대장에 적어주세요." }
+];
+
+// 2. 데이터를 화면에 그려주는 함수
+function renderFAQ() {
+  const container = document.getElementById('faq-list');
+  if (container) {
+    container.innerHTML = faqData.map(item => `
+      <details class="faq-item">
+        <summary>${item.q}</summary>
+        <p>${item.a}</p>
+      </details>
+    `).join('');
+  }
+}
+
+// 3. Q&A 열고 닫는 함수
+function toggleFAQ() {
+  const faq = document.getElementById('faq');
+  if (faq.style.display === 'none') {
+    faq.style.display = 'block';
+    faq.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    faq.style.display = 'none';
+  }
+}
+
+// 4. 페이지 로딩 시 실행 (기존 코드가 있다면 합쳐주세요)
+window.onload = function() {
+  renderFAQ();
+};
+
 </script>
 
 </html>
