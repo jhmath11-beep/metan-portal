@@ -1,12 +1,16 @@
+/* 1. 기본 설정 및 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f7fb;
+  font-family: 'Pretendard', Arial, sans-serif; /* 폰트를 가독성 좋은 Pretendard로 교체 */
+  background: #f0f2f5;
   color: #1f2937;
+  line-height: 1.6;
 }
 
 .wrap {
@@ -14,42 +18,61 @@ body {
   margin: 0 auto;
 }
 
+/* 2. 헤더 - 세련된 네이비 그라데이션 */
 .hero {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   color: white;
-  padding: 48px 0;
+  padding: 60px 0;
+  text-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .hero h1 {
-  margin: 0 0 10px;
-  font-size: 2rem;
+  margin: 0 0 12px;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .hero p {
   margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
+/* 3. 퀵 링크 - 알약 형태 메뉴 */
 .quick-links {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin: 24px 0;
+  justify-content: center;
+  gap: 15px;
+  margin: -25px 0 40px; /* 헤더에 살짝 걸치게 배치 */
 }
 
 .quick-links a {
   text-decoration: none;
   background: white;
-  padding: 10px 14px;
-  border-radius: 10px;
+  padding: 12px 24px;
+  border-radius: 50px; /* 완전 둥근 알약 모양 */
   color: #1e3a8a;
   font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
 }
 
+.quick-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  color: #2563eb;
+}
+
+/* 4. 카드 그리드 */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
-  margin: 24px 0 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 24px 0 60px;
 }
 
 .card {
@@ -57,61 +80,74 @@ body {
   text-decoration: none;
   color: inherit;
   background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  border-color: #3b82f6;
 }
 
 .card h2 {
   margin-top: 0;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  color: #1e3a8a;
+  margin-bottom: 12px;
 }
 
 .card p {
   margin-bottom: 0;
-  line-height: 1.5;
+  font-size: 0.95rem;
   color: #4b5563;
 }
 
-.footer {
-  padding: 20px 0 40px;
-  color: #6b7280;
-  font-size: 0.95rem;
-}
-
+/* 5. 외부 서비스 버튼 스타일 */
 .service-links {
   display: flex;
-  flex-wrap: wrap; /* 버튼이 많으면 다음 줄로 넘김 */
-  gap: 8px;        /* 버튼 사이 간격 */
-  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
 }
 
 .mini-btn {
   display: inline-block;
-  padding: 8px 12px;
-  background-color: #f1f3f5; /* 기본 버튼 색상 */
-  color: #333;
+  padding: 8px 14px;
+  background-color: #f3f4f6;
+  color: #374151;
   text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid #dee2e6;
+  border: 1px solid #e5e7eb;
   transition: all 0.2s ease;
 }
 
 .mini-btn:hover {
-  background-color: #e9ecef;
-  border-color: #adb5bd;
+  background-color: #e5e7eb;
   transform: translateY(-1px);
 }
 
-/* 하이라이트(강조) 버튼 스타일 - 파란색 계열 */
 .mini-btn.highlight {
-  background-color: #007bff;
-  color: white;
-  border-color: #0056b3;
+  background-color: #ebf2ff; /* 연한 파란색 배경 */
+  color: #2563eb;           /* 진한 파란색 글자 */
+  border-color: #bfdbfe;
 }
 
 .mini-btn.highlight:hover {
-  background-color: #0056b3;
+  background-color: #2563eb;
+  color: white;
+}
+
+/* 6. 푸터 */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  border-top: 1px solid #e5e7eb;
 }
