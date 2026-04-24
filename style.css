@@ -259,3 +259,31 @@ body::before {
   }
   .badge { align-self: flex-end; margin-top: -25px; }
 }
+
+/* --- 공지사항 하단 버튼 스타일 (맨 아래 추가) --- */
+.notice-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.close-footer-btn {
+  padding: 8px 20px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-footer-btn:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+  transform: translateY(-2px);
+}
+
