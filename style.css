@@ -170,3 +170,92 @@ body::before {
   font-size: 0.9rem;
   border-top: 1px solid #e5e7eb;
 }
+
+/* --- 공지사항 섹션 디자인 --- */
+.notice-section {
+  margin-bottom: 30px;
+  scroll-margin-top: 20px; /* 링크 이동 시 여백 */
+}
+
+.notice-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #e5e7eb;
+  animation: slideDown 0.5s ease-out;
+}
+
+.notice-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 10px;
+}
+
+.notice-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1e3a8a;
+}
+
+.notice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice-list li {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f9fafb;
+  gap: 15px;
+}
+
+.notice-list li:last-child {
+  border-bottom: none;
+}
+
+.notice-list .date {
+  font-weight: 700;
+  color: #3b82f6;
+  min-width: 75px;
+}
+
+.notice-list .content {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+/* 뱃지 스타일 */
+.badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-meeting { background: #e0f2fe; color: #0369a1; }
+.badge-edu { background: #fef3c7; color: #92400e; }
+.badge-event { background: #fee2e2; color: #b91c1c; }
+
+/* 나타나기 애니메이션 */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+  .notice-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .badge { align-self: flex-end; margin-top: -25px; }
+}
