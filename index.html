@@ -203,5 +203,14 @@ function toggleFAQ() {
 window.onload = function() {
   // 초기 로딩 시 특별히 할 일은 없으나 토글 시 showCategoryMenu를 호출하므로 비워둬도 무방합니다.
 };
+
+  function showPendingMessage(event) {
+  event.preventDefault(); // 링크 클릭 시 페이지 상단으로 튕기는 현상 방지
+  document.getElementById('pending-modal').style.display = 'flex';
+}
+
+function closePendingMessage() {
+  document.getElementById('pending-modal').style.display = 'none';
+}
 </script>
 </html>
