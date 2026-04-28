@@ -118,29 +118,48 @@ body {
 }
 
 /* 3. 퀵 링크 - 알약 형태 메뉴 */
+/* 퀵링크 영역: 한 줄로 유지하고 가로 스크롤 적용 */
 .quick-links {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: -25px 0 40px; /* 헤더에 살짝 걸치게 배치 */
+  overflow-x: auto;      /* 가로 방향으로 내용이 넘치면 스크롤 생성 */
+  white-space: nowrap;   /* 텍스트가 줄바꿈되지 않도록 설정 */
+  gap: 10px;             /* 버튼 사이 간격 */
+  padding: 10px 5px 20px; /* 아래쪽 여백은 스크롤바 공간을 위해 조금 더 줌 */
+  margin-bottom: 10px;
+  -webkit-overflow-scrolling: touch; /* 아이폰에서 스크롤을 부드럽게 함 */
 }
 
+/* 스크롤바 숨기기 (디자인을 위해 깔끔하게 제거) */
+.quick-links::-webkit-scrollbar {
+  display: none;
+}
+
+.quick-links {
+  -ms-overflow-style: none;  /* 인터넷 익스플로러용 */
+  scrollbar-width: none;     /* 파이어폭스용 */
+}
+
+/* 퀵링크 버튼 스타일 */
 .quick-links a {
-  text-decoration: none;
-  background: white;
-  padding: 12px 24px;
-  border-radius: 50px; /* 완전 둥근 알약 모양 */
+  flex: 0 0 auto;        /* 버튼이 줄어들지 않고 자기 크기를 유지함 */
+  padding: 10px 18px;
+  background-color: #ffffff;
   color: #1e3a8a;
+  border-radius: 50px;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.quick-links a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  color: #2563eb;
+/* 다크모드 대응 */
+[data-theme='dark'] .quick-links a {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  border-color: #334155;
 }
+
 
 /* 4. 카드 그리드 수정 */
 /* 4. 카드 그리드 - 상단 4개 카드를 위한 꽉 찬 밸런스 */
