@@ -478,14 +478,68 @@ body::before {
 }
 
 /* 급식 카드 */
-.meal-card { border-left: 5px solid #ff9f43; }
-.meal-container { padding: 20px; background-color: #f8fafc; border-radius: 12px; }
-.meal-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.meal-item { 
-  background: white; padding: 6px 14px; border-radius: 50px; 
-  border: 1px solid #e2e8f0; font-size: 0.95rem; font-weight: 600; 
-  color: #1e3a8a; box-shadow: 0 2px 4px rgba(0,0,0,0.03); 
+/* 급식 섹션 전체 컨테이너 */
+#meal-section {
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
+
+/* 급식 카드 - 크기 줄이고 둥글게 */
+.meal-card {
+  background: white;
+  border-radius: 20px;     /* 다른 카드들과 통일감 부여 */
+  padding: 15px 20px;      /* 여백을 줄여서 전체 크기 축소 */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #f1f5f9;
+  max-width: 600px;        /* [핵심] PC에서 너무 커지지 않게 제한 */
+  margin: 0 auto;          /* 가운데 정렬 */
+}
+
+/* 급식 헤더 (제목과 날짜선택 부분) */
+.meal-card .notice-header {
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed #e2e8f0; /* 절취선 느낌으로 가볍게 */
+}
+
+#meal-title {
+  font-size: 1.1rem;       /* 제목 크기 살짝 축소 */
+  color: #1e3a8a;
+}
+
+/* 급식 메뉴 아이템들 */
+.meal-container {
+  padding: 5px 0;
+}
+
+.meal-grid {
+  display: flex;
+  flex-wrap: wrap;         /* 줄바꿈 허용 */
+  gap: 8px;                /* 아이템 간격 */
+  justify-content: center;
+}
+
+.meal-item {
+  background-color: #f8fafc;
+  padding: 6px 12px;       /* 알약 모양으로 더 작게 */
+  border-radius: 50px;
+  font-size: 0.85rem;      /* 글자 크기 살짝 축소 */
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+/* 모바일 전용 보정 */
+@media (max-width: 600px) {
+  .meal-card {
+    width: 95%;            /* 모바일에서는 화면에 맞게 */
+    padding: 12px 15px;
+  }
+  .meal-item {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+
 
 /* --- 팝업 모달 기본 디자인 (필수) --- */
 
