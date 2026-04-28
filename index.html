@@ -51,15 +51,15 @@
 <section id="meal-section" class="notice-section">
   <div class="notice-card meal-card">
     <div class="notice-header">
-      <span class="notice-icon">🍱</span>
-      <h3 id="meal-title">오늘의 급식</h3>
-      <div class="meal-controls" style="display: flex; align-items: center; gap: 10px; margin-left: auto;">
-        <select id="meal-date-select" onchange="changeMealDate(this.value)" style="padding: 5px; border-radius: 5px; border: 1px solid #ddd; font-size: 0.85rem;">
-          <option value="">날짜 선택</option>
-        </select>
-        <button onclick="loadTodayMeal()" style="background: none; border: none; cursor: pointer; font-size: 1.2rem;" title="새로고침">🔄</button>
-      </div>
-    </div>
+  <span class="notice-icon">🍱</span>
+  <h3 id="meal-title">오늘의 급식</h3>
+  <div class="meal-controls" style="display: flex; align-items: center; gap: 10px; margin-left: auto;">
+    <select id="meal-date-select" onchange="changeMealDate(this.value)" style="padding: 5px; border-radius: 5px; border: 1px solid #ddd; font-size: 0.85rem;">
+      <option value="">날짜 선택</option>
+    </select>
+    <button type="button" class="today-btn" onclick="resetToToday()">TODAY</button>
+  </div>
+</div>
     <div id="meal-display-area" class="meal-container">
       <p class="meal-loading">식단을 불러오는 중...</p>
     </div>
@@ -452,6 +452,28 @@ function changeMealDate(selectedDate) {
     displayMeal(selectedDate);
   }
 }
+
+// TODAY 버튼을 눌렀을 때 오늘 날짜로 자동 복구하는 함수
+function resetToToday() {
+  const now = new Date();
+  // JSON 파일 형식에 맞는 오늘 날짜 키 (예: 20260428)
+  const todayKey = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+
+  const dateSelect = document.getElementById('meal-date-select');
+  
+  if (dateSelect) {
+    // 1. 셀렉트 박스에서 오늘 날짜와 일치하는 값을 찾아 선택 상태로 만듦
+    dateSelect.value = todayKey;
+    
+    // 2. 만약 오늘 날짜 데이터가 목록에 있다면 급식을 화면에 표시
+    if (dateSelect.value === todayKey) {
+      displayMeal(todayKey);
+    } else {
+      // 목록에 오늘 날짜가 없는 경우 (주말이나 휴일 등)
+      alert("오늘 날짜의 식단 정보가 목록에 없습니다.");
+    }
+  }
+}    
     
   </script>
 </body>
