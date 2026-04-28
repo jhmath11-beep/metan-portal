@@ -159,9 +159,9 @@ body::before {
 }
 
 .mini-btn.highlight {
-  background-color: #ebf2ff; /* 연한 파란색 배경 */
-  color: #2563eb;           /* 진한 파란색 글자 */
-  border-color: #bfdbfe;
+  background-color: #ffffff;
+  border: 1.5px solid #bfdbfe; /* 테두리를 조금 더 두껍게 */
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.05); /* 은은한 그림자 */
 }
 
 .mini-btn.highlight:hover {
