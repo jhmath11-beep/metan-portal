@@ -531,25 +531,34 @@ body::before {
 /* 내부 컨테이너 배치 */
 .bottom-services-container {
   display: flex;
-  align-items: center; /* 세로 중앙 정렬 */
-  gap: 40px;           /* 이미지와 텍스트 사이 간격 */
+  align-items: stretch; /* 핵심: 왼쪽 이미지와 오른쪽 텍스트 영역의 높이를 일치시킴 */
+  gap: 30px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 /* 왼쪽: 이미지 스타일 */
 .service-visual {
-  flex-shrink: 0; /* 이미지 크기 유지 */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center; /* 이미지가 영역 내에서 중앙에 오도록 */
 }
 
 .service-logo-large {
-  width: 120px;    /* 크기를 120px로 키움 (기존 30px 대비 4배) */
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  width: 140px;      /* 이미지 가로 크기 유지 */
+  height: 100%;      /* 높이를 부모(텍스트 영역 전체)에 맞춤 */
+  min-height: 120px; /* 최소 높이 보장 */
+  object-fit: contain; /* 이미지가 일그러지지 않고 비율을 유지하며 꽉 차게 함 */
+  border-radius: 12px;
 }
 
 /* 오른쪽: 콘텐츠 영역 */
 .service-content {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 텍스트와 버튼이 수직 중앙에 예쁘게 배치됨 */
 }
 
 .service-title-area {
@@ -558,13 +567,12 @@ body::before {
 
 .service-title-area h4 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #1e3a8a;
-  font-weight: 700;
 }
 
 .service-title-area p {
-  margin: 5px 0 0;
+  margin: 4px 0 15px;
   font-size: 0.85rem;
   color: #6b7280;
 }
