@@ -625,56 +625,12 @@ body::before {
 }
 
 /* 급식 카드 스타일 */
-.meal-card {
-  border-left: 5px solid #0056b3; /* 신뢰감 있는 블루 */
-  background: #ffffff;
-}
-
-.meal-link-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px 10px;
-  background: #f0f7ff;
-  border-radius: 15px;
-  border: 1px solid #dbeafe;
-}
-
-.meal-info-box {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.meal-guide-text {
-  font-size: 1rem;
-  color: #1e3a8a;
-  font-weight: 600;
-  margin: 0;
-}
-
-.meal-sub-text {
-  font-size: 0.8rem;
-  color: #64748b;
-  margin: 4px 0 0;
-}
-
-.meal-homepage-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #0056b3;
-  color: white !important;
-  padding: 14px 28px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
-  transition: all 0.2s ease;
-}
-
-.meal-homepage-btn:hover {
-  transform: translateY(-2px);
-  background-color: #004494;
-  box-shadow: 0 6px 18px rgba(0, 86, 179, 0.3);
+.meal-card { border-left: 5px solid #ff9f43; }
+.meal-date-text { margin-left: auto; font-weight: bold; color: #64748b; }
+.meal-container { padding: 20px; background-color: #f8fafc; border-radius: 12px; }
+.meal-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.meal-item { 
+  background: white; padding: 6px 14px; border-radius: 50px; 
+  border: 1px solid #e2e8f0; font-size: 0.95rem; font-weight: 600; 
+  color: #1e3a8a; box-shadow: 0 2px 4px rgba(0,0,0,0.03); 
 }
