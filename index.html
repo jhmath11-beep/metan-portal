@@ -15,432 +15,283 @@
   </header>
 
   <main class="wrap">
-      <section class="quick-links">
-  <a href="#" onclick="toggleNotice(); return false;">공지사항(일정 등)</a>
-  <a href="#" onclick="toggleFAQ(); return false;">무엇이든 물어보매(FAQ)</a>
-  <a href="#" onclick="togglePhone(); return false;">📞 내선번호 검색</a>
-</section>
+    <section class="quick-links">
+      <a href="#" onclick="toggleNotice(); return false;">공지사항(일정 등)</a>
+      <a href="#" onclick="toggleFAQ(); return false;">무엇이든 물어보매(FAQ)</a>
+      <a href="#" onclick="togglePhone(); return false;">📞 내선번호 검색</a>
+    </section>
 
-  <section id="notice" class="notice-section" style="display: none;">
-  <div class="notice-card">
-    <div class="notice-header">
-      <span class="notice-icon">📢</span>
-      <h3>이 달의 회의(연수) 및 주요 일정</h3>
-    </div>
-    <ul class="notice-list">
-      <li>
-        <span class="date">04.28.(화)~29.(수)</span>
-        <span class="content">1차 정기시험 (2,3학년)</span>
-        <span class="badge badge-edu">시험</span>
-      </li>
-      <li>
-        <span class="date">04.29(수)</span>
-        <span class="content">교직원 워크샵</span>
-        <span class="badge badge-event">행사</span>
-      </li>
-       <li>
-        <span class="date">05.04(월)</span>
-        <span class="content">재량휴업일</span>
-        <span class="badge badge-event">휴업</span>
-      </li>
-      <li>
-        <span class="date">05.08(금)</span>
-        <span class="content">정기시험 논술형 채점 완료</span>
-        <span class="badge badge-edu">채점</span>
-        <li>
-        <span class="date">05.11(월)~12(화)</span>
-        <span class="content">정기시험 이의신청기간</span>
-        <span class="badge badge-edu">평가</span>
-      </li>
-      </li>
-      <li>
-        <span class="date">05.12(화)</span>
-        <span class="content">기획회의</span>
-        <span class="badge badge-meeting">회의</span>
-      </li>
-      <li>
-        <span class="date">05.13(수)</span>
-        <span class="content">정기시험 학생확인완료</span>
-        <span class="badge badge-edu">평가확인</span>
-      </li>
-      <li>
-        <span class="date">05.18(월)</span>
-        <span class="content">교직원회의</span>
-        <span class="badge badge-meeting">회의</span>
-      </li>
-      <li>
-        <span class="date">05.26(화)</span>
-        <span class="content">기획회의</span>
-        <span class="badge badge-meeting">회의</span>
-      </li>
-    </ul>
-    <div class="notice-footer">
-      <button class="close-footer-btn" onclick="toggleNotice()">확인 후 닫기</button>
-    </div>
-  </div>
-</section>
+    <section id="notice" class="notice-section" style="display: none;">
+      <div class="notice-card">
+        <div class="notice-header">
+          <span class="notice-icon">📢</span>
+          <h3>이 달의 회의(연수) 및 주요 일정</h3>
+        </div>
+        <ul class="notice-list">
+          <li><span class="date">04.28.(화)~29.(수)</span><span class="content">1차 정기시험 (2,3학년)</span><span class="badge badge-edu">시험</span></li>
+          <li><span class="date">04.29(수)</span><span class="content">교직원 워크샵</span><span class="badge badge-event">행사</span></li>
+          <li><span class="date">05.04(월)</span><span class="content">재량휴업일</span><span class="badge badge-event">휴업</span></li>
+          <li><span class="date">05.08(금)</span><span class="content">정기시험 논술형 채점 완료</span><span class="badge badge-edu">채점</span></li>
+          <li><span class="date">05.11(월)~12(화)</span><span class="content">정기시험 이의신청기간</span><span class="badge badge-edu">평가</span></li>
+          <li><span class="date">05.12(화)</span><span class="content">기획회의</span><span class="badge badge-meeting">회의</span></li>
+          <li><span class="date">05.13(수)</span><span class="content">정기시험 학생확인완료</span><span class="badge badge-edu">평가확인</span></li>
+          <li><span class="date">05.18(월)</span><span class="content">교직원회의</span><span class="badge badge-meeting">회의</span></li>
+          <li><span class="date">05.26(화)</span><span class="content">기획회의</span><span class="badge badge-meeting">회의</span></li>
+        </ul>
+        <div class="notice-footer">
+          <button class="close-footer-btn" onclick="toggleNotice()">확인 후 닫기</button>
+        </div>
+      </div>
+    </section>
 
-<section id="faq" class="notice-section" style="display: none;">
-  <div class="notice-card">
-    <div class="notice-header">
-      <span class="notice-icon">❓</span>
-      <h3 id="faq-title">자주 묻는 업무 Q&A</h3>
-      <button id="faq-back-btn" class="back-btn" onclick="showCategoryMenu()" style="display: none;">← 뒤로</button>
-    </div>
-    
-    <div id="faq-categories" class="faq-category-grid">
-      <div class="cate-item" onclick="filterFAQ('출결')">📂 출결</div>
-      <div class="cate-item" onclick="filterFAQ('학적')">📋 학적</div>
-      <div class="cate-item" onclick="filterFAQ('복무')">⏰ 복무</div>
-      <div class="cate-item" onclick="filterFAQ('생기부')">📝 생기부</div>
-      <div class="cate-item" onclick="filterFAQ('기타')">📜 기타(학폭 등)</div>
-    </div>
-
-    <div id="faq-list" class="faq-container" style="display: none;"></div>
-
-    <div class="notice-footer">
-      <button class="close-footer-btn" onclick="toggleFAQ()">창 닫기</button>
-    </div>
-  </div>
-</section>
+    <section id="faq" class="notice-section" style="display: none;">
+      <div class="notice-card">
+        <div class="notice-header">
+          <span class="notice-icon">❓</span>
+          <h3 id="faq-title">자주 묻는 업무 Q&A</h3>
+          <button id="faq-back-btn" class="back-btn" onclick="showCategoryMenu()" style="display: none;">← 뒤로</button>
+        </div>
+        <div id="faq-categories" class="faq-category-grid">
+          <div class="cate-item" onclick="filterFAQ('출결')">📂 출결</div>
+          <div class="cate-item" onclick="filterFAQ('학적')">📋 학적</div>
+          <div class="cate-item" onclick="filterFAQ('복무')">⏰ 복무</div>
+          <div class="cate-item" onclick="filterFAQ('생기부')">📝 생기부</div>
+          <div class="cate-item" onclick="filterFAQ('기타')">📜 기타(학폭 등)</div>
+        </div>
+        <div id="faq-list" class="faq-container" style="display: none;"></div>
+        <div class="notice-footer">
+          <button class="close-footer-btn" onclick="toggleFAQ()">창 닫기</button>
+        </div>
+      </div>
+    </section>
 
     <section id="phone-section" class="notice-section" style="display: none;">
-  <div class="notice-card">
-    <div class="notice-header">
-      <span class="notice-icon">☎️</span>
-      <h3>교직원 내선번호 검색</h3>
-    </div>
-    
-    <div class="phone-search-box">
-  <input type="text" id="phone-input" placeholder="검색어를 입력하세요" onkeyup="searchPhone()">
-  <p class="search-example">
-    예: 성함 입력, 특별실 이름 입력(급식실, 방송실, 매여울포럼실, 시청각실, 성적처리실, 발간실, btl실, 미래정보실, 미술실, 민원면담실, 과학실, 컴퓨터실, 기술가정실, 음악실 등)
-  </p>
-</div>
-    
-    <div id="phone-result" class="phone-result-area">
-      <p class="search-guide">성함을 입력하시면 번호가 나타납니다.</p>
-    </div>
-
-    <div class="notice-footer">
-      <button class="close-footer-btn" onclick="togglePhone()">닫기</button>
-    </div>
-  </div>
-</section>
+      <div class="notice-card">
+        <div class="notice-header">
+          <span class="notice-icon">☎️</span>
+          <h3>교직원 내선번호 검색</h3>
+        </div>
+        <div class="phone-search-box">
+          <input type="text" id="phone-input" placeholder="검색어를 입력하세요" onkeyup="searchPhone()">
+          <p class="search-example">예: 성함 입력, 특별실 이름 입력(급식실, 방송실, btl실, 미래정보실, 과학실, 성적처리실, 미술실 등)</p>
+        </div>
+        <div id="phone-result" class="phone-result-area">
+          <p class="search-guide">성함을 입력하시면 번호가 나타납니다.</p>
+        </div>
+        <div class="notice-footer">
+          <button class="close-footer-btn" onclick="togglePhone()">닫기</button>
+        </div>
+      </div>
+    </section>
 
     <section class="card-grid">
       <a class="card" href="https://padlet.com/tsyche1/2026-erggj7epwnxe87w6" target="_blank">
-        <img src="images/manual.png" alt="매뉴얼 매라매" style="width:100%; border-radius:12px; margin-bottom:15px;">
+        <img src="images/manual.png" alt="매뉴얼">
         <h2>교무부 업무안내 패들렛</h2>
         <p>교무기획부 패들렛(인사,포상,각종 양식 등)을 확인합니다.</p>
       </a>
 
       <a class="card" href="https://notebooklm.google.com/notebook/77cc84a4-2b89-436a-92ef-95005610363b/preview" target="_blank">
-        <img src="images/chatbot.png" alt="챗봇 매라매" style="width:100%; border-radius:12px; margin-bottom:15px;">
+        <img src="images/chatbot.png" alt="챗봇">
         <h2>학교 규정 검색 챗봇</h2>
         <p>평가, 출결, 생활지도, 학사 운영 규정 등을 빠르게 찾습니다.</p>
       </a>
 
       <a class="card" href="#" onclick="showPendingMessage(event);">
-  <img src="images/consult.png" alt="상담예약 매라매">
-  <h2>온라인 상담 예약 시스템(준비중)</h2>
-  <p>학부모 상담 신청을 확인하고 확정합니다.</p>
-</a>
+        <img src="images/consult.png" alt="상담">
+        <h2>온라인 상담 예약 시스템(준비중)</h2>
+        <p>학부모 상담 신청을 확인하고 확정합니다.</p>
+      </a>
 
-      <a class="card" href="선생님의_교육연구부_패들렛_소" target="_blank">
-        <img src="images/research.png" alt="연구 매라매">
+      <a class="card" href="선생님의_교육연구부_패들렛_주소" target="_blank">
+        <img src="images/research.png" alt="연구">
         <h2>교육연구부 패들렛</h2>
         <p>연수 계획, 연구 학교 자료 등을 확인합니다.</p>
       </a>
-    
     </section>
-  </main>
-
-  <section class="bottom-services">
-  <div class="wrap">
-    <div class="bottom-services-container">
-      <div class="service-visual">
-        <img src="images/service.png" alt="서비스 안내" class="service-logo-large">
-      </div>
-      
-      <div class="service-content">
-        <div class="service-title-area">
-          <h4>자주 쓰는 외부 서비스</h4>
-          <p>원하는 시스템을 클릭하면 바로 이동합니다.</p>
+  </main> <section class="bottom-services">
+    <div class="wrap">
+      <div class="bottom-services-container">
+        <div class="service-visual">
+          <img src="images/service.png" alt="서비스 안내" class="service-logo-large">
         </div>
-      <div class="service-links-bottom">
-        <a href="https://hi.goe.go.kr" target="_blank" class="mini-btn highlight">하이러닝</a>
-        <a href="https://goe.eduptl.kr/" target="_blank" class="mini-btn highlight">업무포털</a>
-        <a href="https://gdp.goe.go.kr/" target="_blank" class="mini-btn highlight">지원이</a>
-        <a href="https://www.ealimi.com/" target="_blank" class="mini-btn highlight">이알리미</a>
-        <a href="https://www.gtie.go.kr/" target="_blank" class="mini-btn highlight">경기도교육연수원</a>
-        <a href="https://evpn.goe.go.kr/custom/index.html#" target="_blank" class="mini-btn highlight">evpn</a>
-        <a href="https://jinro.goedu.kr/" target="_blank" class="mini-btn highlight">꿈it(잇)다</a>
-        <a href="https://maetan-m.goesw.kr/maetan-m/main.do" target="_blank" class="mini-btn highlight">매탄중학교 홈페이지</a>
-        <a href="https://gaide.goe.go.kr/loginGate" target="_blank" class="mini-btn highlight">교육공동체포털</a>
-        <a href="https://www.goesw.kr/goesw/main.do" target="_blank" class="mini-btn highlight">수원교육지원청</a>
-        <a href="https://www.goe.go.kr/goe/main.do" target="_blank" class="mini-btn highlight">경기도교육청</a>
+        <div class="service-content">
+          <div class="service-title-area">
+            <h4>자주 쓰는 외부 서비스</h4>
+            <p>원하는 시스템을 클릭하면 바로 이동합니다.</p>
+          </div>
+          <div class="service-links-bottom">
+            <a href="https://hi.goe.go.kr" target="_blank" class="mini-btn highlight">하이러닝</a>
+            <a href="https://goe.eduptl.kr/" target="_blank" class="mini-btn highlight">업무포털</a>
+            <a href="https://gdp.goe.go.kr/" target="_blank" class="mini-btn highlight">지원이</a>
+            <a href="https://www.ealimi.com/" target="_blank" class="mini-btn highlight">이알리미</a>
+            <a href="https://www.gtie.go.kr/" target="_blank" class="mini-btn highlight">경기도교육연수원</a>
+            <a href="https://evpn.goe.go.kr/custom/index.html#" target="_blank" class="mini-btn highlight">evpn</a>
+            <a href="https://jinro.goedu.kr/" target="_blank" class="mini-btn highlight">꿈it(잇)다</a>
+            <a href="https://maetan-m.goesw.kr/maetan-m/main.do" target="_blank" class="mini-btn highlight">매탄중학교 홈페이지</a>
+            <a href="https://gaide.goe.go.kr/loginGate" target="_blank" class="mini-btn highlight">교육공동체포털</a>
+            <a href="https://www.goesw.kr/goesw/main.do" target="_blank" class="mini-btn highlight">수원지원청</a>
+            <a href="https://www.goe.go.kr/goe/main.do" target="_blank" class="mini-btn highlight">경기도교육청</a>
+          </div>
         </div>
-      </div> 
-    </div>
-  </div>
-</section>
-  
-      <a class="card" href="#" onclick="showPendingMessage(event);">
-  <img src="images/consult.png" alt="상담예약 매라매">
-  <h2>온라인 상담 예약 시스템(준비중)</h2>
-  <p>학부모 상담 신청을 확인하고 확정합니다.</p>
-</a>
-
-      <a class="card" href="선생님의_교육연구부_패들렛_소" target="_blank">
-        <img src="images/research.png" alt="연구 매라매">
-        <h2>교육연구부 패들렛</h2>
-        <p>연수 계획, 연구 학교 자료 등을 확인합니다.</p>
-      </a>
-    
-    </section>
-  </main>
-
-  <section class="bottom-services">
-  <div class="wrap">
-    <div class="bottom-services-inner">
-      <div class="service-title-area">
-        <img src="images/service.png" alt="서비스 안내" class="service-icon-mini">
-        <h4>자주 쓰는 외부 서비스</h4>
-      </div>
-      <div class="service-links-bottom">
-        <a href="https://hi.goe.go.kr" target="_blank" class="mini-btn highlight">하이러닝</a>
-        <a href="https://goe.eduptl.kr/" target="_blank" class="mini-btn highlight">업무포털</a>
-        <a href="https://gdp.goe.go.kr/" target="_blank" class="mini-btn highlight">지원이</a>
-        <a href="https://www.ealimi.com/" target="_blank" class="mini-btn highlight">이알리미</a>
-        <a href="https://www.gtie.go.kr/" target="_blank" class="mini-btn highlight">경기도교육연수원</a>
-        <a href="https://evpn.goe.go.kr/custom/index.html#" target="_blank" class="mini-btn highlight">evpn</a>
-        <a href="https://jinro.goedu.kr/" target="_blank" class="mini-btn highlight">꿈it(잇)다</a>
-        <a href="https://maetan-m.goesw.kr/maetan-m/main.do" target="_blank" class="mini-btn highlight">매탄중학교 홈페이지</a>
-        <a href="https://gaide.goe.go.kr/loginGate" target="_blank" class="mini-btn highlight">교육공동체포털</a>
-        <a href="https://www.goesw.kr/goesw/main.do" target="_blank" class="mini-btn highlight">수원교육지원청</a>
-        <a href="https://www.goe.go.kr/goe/main.do" target="_blank" class="mini-btn highlight">경기도교육청</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div class="wrap">
-    <p>매탄중학교 업무포털 · 매탄중학교 교직원 전용</p>
-  </div>
-</footer>
-  
   <footer class="footer">
     <div class="wrap">
       <p>매탄중학교 업무포털 · 매탄중학교 교직원 전용</p>
     </div>
   </footer>
+
   <div id="pending-modal" class="modal-overlay" style="display: none;">
-  <div class="modal-content">
-    <div class="modal-icon">🚧</div>
-    <h3>알림</h3>
-    <p>해당 페이지는 현재 **준비 중**입니다.<br>더 나은 서비스를 위해 정비하고 있으니 잠시만 기다려 주세요.</p>
-    <button class="modal-close-btn" onclick="closePendingMessage()">닫기</button>
+    <div class="modal-content">
+      <div class="modal-icon">🚧</div>
+      <h3>알림</h3>
+      <p>해당 페이지는 현재 <strong>준비 중</strong>입니다.<br>더 나은 서비스를 위해 정비하고 있으니 잠시만 기다려 주세요.</p>
+      <button class="modal-close-btn" onclick="closePendingMessage()">닫기</button>
+    </div>
   </div>
-</div>
+
+  <script>
+    /* 스크립트 부분은 선생님의 데이터를 완벽하게 보존하기 위해 
+       기존에 쓰시던 내용을 그대로 유지하시면 됩니다. */
+
+    function toggleNotice() {
+      const notice = document.getElementById('notice');
+      notice.style.display = (notice.style.display === 'none') ? 'block' : 'none';
+      if(notice.style.display === 'block') notice.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const faqData = [
+      { category: "복무", q: "제41조연수의 결재라인은 어떻게 되나요?", a: "본인 - 연구부장 - 교감" },
+      { category: "출결", q: "독감이나 코로나에 걸린 학생의 진료확인서에 격리기간이 명시되지 않은 경우 출석인정일수는?", a: "처방받은 약봉투의 처방일수를 기준으로 최대 5일 인정됩니다." },
+      { category: "출결", q: "소견서에 5일간 격리를 요한다는 학생이 3일만에 등교를 원해요. 등교가 가능한가요?", a: "가능합니다. 별도의 학부모의견서나 서류는 필요하지 않으며, 개인위생관리를 철저히 할 것을 당부해 주세요." },
+      { category: "출결", q: "나이스 대국민 서비스를 통해 체험학습 보고서 제출이 가능한가요?", a: "가능합니다. 단, 체험학습 보고서 양식에 직접 손글씨로 작성 후 첨부해서 신청해야 합니다." },
+      { category: "출결", q: "동일한 질병 사유인 경우 하나의 서류로 질병결석 처리가 가능한가요?", a: "가능합니다. 이 경우 약 처방일수(약봉투 제출) 기준으로 최대 3일까지 가능합니다." },
+      { category: "생기부", q: "2026년 출결특기사항에 '개근' 또는 '기타결석' 사유만 입력 가능한가요?", a: "네. 하지만 필요하다고 판단되는 경우 다른 사유에 대해서도 학업성적관리위원회 심의를 통해 기재할 수 있습니다." },
+      { category: "출결", q: "학생이 해외여행을 가는 경우 국외여행신고서를 꼭 제출해야 하나요?", a: "학기 중엔 체험학습 서류만, 방학 중엔 안전 파악을 위해 국외여행신고서를 제출합니다." },
+      { category: "출결", q: "시수가 3시간인 날에 체험학습 '반일' 신청이 가능한가요?", a: "불가능합니다. 3차시 수업일에 온전히 빠지는 것이기 때문에 인정되지 않습니다." },
+      { category: "복무", q: "사립학교에서 강의 요청 공문을 수신하였습니다. 외부강의 신고를 해야 하나요?", a: "네. 공립이 아닌 사립학교 출강은 나이스를 통해 외부강의 신고가 필요합니다." },
+      { category: "복무", q: "연가 상신 시 사유는 무엇을 선택해야 하나요?", a: "방학이나 휴업일에는 '휴업일'을 선택하고, 학기중인 경우에는 1~9호 중 선택합니다" },
+      { category: "학적", q: "학적 관련 용어(유급,유예,정원외학적관리)가 헷갈려요", a: "'유급':당해학교 수업일수 2/3이상 출석하지 못한 경우, '유예':교육감이 정하는 질병이나 그 밖의 부득이한 사유가 있는 경우, '정원외학적관리':정당한 사유 없이(미인정결석) 해당 학년도 수업일수의 3분의 1이상 장기결석한 학생" },
+      { category: "생기부", q: "전입생 학교생활기록부는 전입교와 전출교 중 어디서 정정해야 하나요?", a: "이전 학년도 학교생활기록부 자료의 정정은 전출교에서 자료를 받아 전입교에서 처리합니다." },
+      { category: "기타", q: "학교폭력 가해학생이 학교폭력 가해학생 조치사항으로 전학 처분을 받았는데, 인정유학을 가려고 합니다. 면제 처리해도 되나요?", a: "학교폭력 가해학생은 학교폭력 사안이 접수된 때부터 학교폭력대책심의위원회의 조치 이행이 완료될 때까지 원칙적으로 '가해학생의 신청에 의한' 학적변동을 제한하므로, 학교폭력 조치사항(전학)이 이행 완료될 때까지는 면제(학적변동) 처리를 할 수 없습니다." }
+    ];
+
+    function showCategoryMenu() {
+      document.getElementById('faq-categories').style.display = 'grid';
+      document.getElementById('faq-list').style.display = 'none';
+      document.getElementById('faq-back-btn').style.display = 'none';
+      document.getElementById('faq-title').innerText = "자주 묻는 업무 Q&A";
+    }
+
+    function filterFAQ(category) {
+      const container = document.getElementById('faq-list');
+      const filteredData = faqData.filter(d => d.category === category);
+      if (filteredData.length === 0) {
+        container.innerHTML = `<p style="text-align:center; padding:20px; color:#999;">등록된 질문이 없습니다.</p>`;
+      } else {
+        container.innerHTML = filteredData.map(item => `
+          <details class="faq-item">
+            <summary>${item.q}</summary>
+            <p>${item.a}</p>
+          </details>
+        `).join('');
+      }
+      document.getElementById('faq-categories').style.display = 'none';
+      document.getElementById('faq-list').style.display = 'block';
+      document.getElementById('faq-back-btn').style.display = 'block';
+      document.getElementById('faq-title').innerText = `[${category}] 질문 목록`;
+    }
+
+    function toggleFAQ() {
+      const faq = document.getElementById('faq');
+      if (faq.style.display === 'none') {
+        faq.style.display = 'block';
+        showCategoryMenu();
+        faq.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        faq.style.display = 'none';
+      }
+    }
+
+    const phoneData = [
+      { name: "김준홍", ext: "450", full: "031-547-1450" }, { name: "박경원", ext: "453", full: "031-547-1453" },
+      { name: "김미아", ext: "455", full: "031-547-1455" }, { name: "이병철", ext: "462", full: "031-547-1462" },
+      { name: "장경원", ext: "463", full: "031-547-1463" }, { name: "신미항", ext: "459", full: "031-547-1459" },
+      { name: "이주연", ext: "457", full: "031-547-1457" }, { name: "한지영", ext: "458", full: "031-547-1458" },
+      { name: "임현정", ext: "419", full: "031-547-1419" }, { name: "김선화", ext: "410", full: "031-547-1410" },
+      { name: "현선신", ext: "420", full: "031-547-1420" }, { name: "정수현", ext: "430", full: "031-547-1430" },
+      { name: "이희성", ext: "421", full: "031-547-1421" }, { name: "이희진", ext: "428", full: "031-547-1428" },
+      { name: "반미리", ext: "418", full: "031-547-1418" }, { name: "곽윤정", ext: "411", full: "031-547-1411" },
+      { name: "윤홍인", ext: "456", full: "031-547-1456" }, { name: "남은복", ext: "424", full: "031-547-1424" },
+      { name: "이하영", ext: "454", full: "031-547-1454" }, { name: "여별희", ext: "433", full: "031-547-1433" },
+      { name: "최미애", ext: "437", full: "031-547-1437" }, { name: "조승아", ext: "435", full: "031-547-1435" },
+      { name: "박지민", ext: "427", full: "031-547-1427" }, { name: "이지선", ext: "431", full: "031-547-1431" },
+      { name: "김혜령", ext: "414", full: "031-547-1414" }, { name: "류혜윤", ext: "426", full: "031-547-1426" },
+      { name: "김미정", ext: "471", full: "031-547-1471" }, { name: "장봉순", ext: "409", full: "031-547-1409" },
+      { name: "진희영", ext: "417", full: "031-547-1417" }, { name: "윤상민", ext: "429", full: "031-547-1429" },
+      { name: "이주아", ext: "432", full: "031-547-1432" }, { name: "한소현", ext: "412", full: "031-547-1412" },
+      { name: "박미영", ext: "436", full: "031-547-1436" }, { name: "박원석", ext: "434", full: "031-547-1434" },
+      { name: "강자영", ext: "423", full: "031-547-1423" }, { name: "국동근", ext: "415", full: "031-547-1415" },
+      { name: "문금숙", ext: "451", full: "031-547-1451" }, { name: "김빛나", ext: "468", full: "031-547-1468" },
+      { name: "장승훈", ext: "464", full: "031-547-1464" }, { name: "한윤희", ext: "465", full: "031-547-1465" },
+      { name: "신한나", ext: "413", full: "031-547-1413" }, { name: "임소현", ext: "452", full: "031-547-1452" },
+      { name: "안하은", ext: "422", full: "031-547-1422" }, { name: "한지윤", ext: "416", full: "031-547-1416" },
+      { name: "이현아", ext: "425", full: "031-547-1425" }, { name: "한희라", ext: "401", full: "031-547-1401" },
+      { name: "김현희", ext: "402", full: "031-547-1402" }, { name: "박수경", ext: "403", full: "031-547-1403" },
+      { name: "전미화", ext: "404", full: "031-547-1404" }, { name: "조은하", ext: "406", full: "031-547-1406" },
+      { name: "김준수", ext: "405", full: "031-547-1405" },
+      { name: "btl실", ext: "498", full: "031-547-1498" }, { name: "급식실", ext: "408", full: "031-547-1408" },
+      { name: "방송실", ext: "483", full: "031-547-1483" }, { name: "매여울포럼실", ext: "480", full: "031-547-1480" },
+      { name: "시청각실", ext: "481", full: "031-547-1481" }, { name: "성적처리실", ext: "482", full: "031-547-1482" },
+      { name: "발간실", ext: "407", full: "031-547-1407" }, { name: "미래정보실", ext: "485", full: "031-547-1485" },
+      { name: "미술실", ext: "486", full: "031-547-1486" }, { name: "민원면담실", ext: "439", full: "031-547-1439" },
+      { name: "과학실", ext: "487", full: "031-547-1487" }, { name: "컴퓨터실", ext: "493", full: "031-547-1493" },
+      { name: "기술가정실", ext: "491", full: "031-547-1491" }, { name: "음악실", ext: "492", full: "031-547-1492" }
+    ];
+
+    function searchPhone() {
+      const keyword = document.getElementById('phone-input').value.trim();
+      const resultArea = document.getElementById('phone-result');
+      if (!keyword) {
+        resultArea.innerHTML = '<p class="search-guide">성함을 입력하시면 번호가 나타납니다.</p>';
+        return;
+      }
+      const person = phoneData.find(p => p.name.includes(keyword));
+      if (person) {
+        resultArea.innerHTML = `
+          <div class="result-card">
+            <div class="name">${person.name} 선생님</div>
+            <div class="numbers">
+              내선: <span class="highlight-num">${person.ext}</span> | 
+              외부이용시: <span class="highlight-num">${person.full}</span>
+            </div>
+          </div>`;
+      } else {
+        resultArea.innerHTML = '<p class="search-guide">검색 결과가 없습니다.</p>';
+      }
+    }
+
+    function togglePhone() {
+      const section = document.getElementById('phone-section');
+      if (section.style.display === 'none') {
+        section.style.display = 'block';
+        document.getElementById('phone-input').focus();
+        section.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        section.style.display = 'none';
+      }
+    }
+
+    function showPendingMessage(event) {
+      event.preventDefault();
+      document.getElementById('pending-modal').style.display = 'flex';
+    }
+    function closePendingMessage() {
+      document.getElementById('pending-modal').style.display = 'none';
+    }
+  </script>
 </body>
-<script>
-// 1. 공지사항 토글
-function toggleNotice() {
-  const notice = document.getElementById('notice');
-  if (notice.style.display === 'none') {
-    notice.style.display = 'block';
-    notice.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    notice.style.display = 'none';
-  }
-}
-
-// 2. 질문 데이터 (오타 수정 완료)
-const faqData = [
-  { category: "복무", q: "제41조연수의 결재라인은 어떻게 되나요?", a: "본인 - 연구부장 - 교감" },
-  { category: "출결", q: "독감이나 코로나에 걸린 학생의 진료확인서에 격리기간이 명시되지 않은 경우 출석인정일수는?", a: "처방받은 약봉투의 처방일수를 기준으로 최대 5일 인정됩니다." },
-  { category: "출결", q: "소견서에 5일간 격리를 요한다는 학생이 3일만에 등교를 원해요. 등교가 가능한가요?", a: "가능합니다. 별도의 학부모의견서나 서류는 필요하지 않으며, 개인위생관리를 철저히 할 것을 당부해 주세요." },
-  { category: "출결", q: "나이스 대국민 서비스를 통해 체험학습 보고서 제출이 가능한가요?", a: "가능합니다. 단, 체험학습 보고서 양식에 직접 손글씨로 작성 후 첨부해서 신청해야 합니다." },
-  { category: "출결", q: "동일한 질병 사유인 경우 하나의 서류로 질병결석 처리가 가능한가요?", a: "가능합니다. 이 경우 약 처방일수(약봉투 제출) 기준으로 최대 3일까지 가능합니다." },
-  { category: "생기부", q: "2026년 출결특기사항에 '개근' 또는 '기타결석' 사유만 입력 가능한가요?", a: "네. 하지만 필요하다고 판단되는 경우 다른 사유에 대해서도 학업성적관리위원회 심의를 통해 기재할 수 있습니다." },
-  { category: "출결", q: "학생이 해외여행을 가는 경우 국외여행신고서를 꼭 제출해야 하나요?", a: "학기 중엔 체험학습 서류만, 방학 중엔 안전 파악을 위해 국외여행신고서를 제출합니다." },
-  { category: "출결", q: "시수가 3시간인 날에 체험학습 '반일' 신청이 가능한가요?", a: "불가능합니다. 3차시 수업일에 온전히 빠지는 것이기 때문에 인정되지 않습니다." },
-  { category: "복무", q: "사립학교에서 강의 요청 공문을 수신하였습니다. 외부강의 신고를 해야 하나요?", a: "네. 공립이 아닌 사립학교 출강은 나이스를 통해 외부강의 신고가 필요합니다." },
-  { category: "복무", q: "연가 상신 시 사유는 무엇을 선택해야 하나요?", a: "방학이나 휴업일에는 '휴업일'을 선택하고, 학기중인 경우에는 1~9호 중 선택합니다" },
-  { category: "학적", q: "학적 관련 용어(유급,유예,정원외학적관리)가 헷갈려요", a: "'유급':당해학교 수업일수 2/3이상 출석하지 못한 경우, '유예':교육감이 정하는 질병이나 그 밖의 부득이한 사유가 있는 경우, '정원외학적관리':정당한 사유 없이(미인정결석) 해당 학년도 수업일수의 3분의 1이상 장기결석한 학생" },
-  { category: "생기부", q: "전입생 학교생활기록부는 전입교와 전출교 중 어디서 정정해야 하나요?", a: "이전 학년도 학교생활기록부 자료의 정정은 전출교에서 자료를 받아 전입교에서 처리합니다." },
-  { category: "기타", q: "학교폭력 가해학생이 학교폭력 가해학생 조치사항으로 전학 처분을 받았는데, 인정유학을 가려고 합니다. 면제 처리해도 되나요?", a: "학교폭력 가해학생은 학교폭력 사안이 접수된 때부터 학교폭력대책심의위원회의 조치 이행이 완료될 때까지 원칙적으로 '가해학생의 신청에 의한' 학적변동을 제한하므로, 학교폭력 조치사항(전학)이 이행 완료될 때까지는 면제(학적변동) 처리를 할 수 없습니다." }
-];
-
-// 3. 카테고리 메뉴 보기
-function showCategoryMenu() {
-  document.getElementById('faq-categories').style.display = 'grid';
-  document.getElementById('faq-list').style.display = 'none';
-  document.getElementById('faq-back-btn').style.display = 'none';
-  document.getElementById('faq-title').innerText = "자주 묻는 업무 Q&A";
-}
-
-// 4. 특정 카테고리 필터링
-function filterFAQ(category) {
-  const container = document.getElementById('faq-list');
-  const filteredData = faqData.filter(d => d.category === category);
-  
-  if (filteredData.length === 0) {
-    container.innerHTML = `<p style="text-align:center; padding:20px; color:#999;">등록된 질문이 없습니다.</p>`;
-  } else {
-    container.innerHTML = filteredData.map(item => `
-      <details class="faq-item">
-        <summary>${item.q}</summary>
-        <p>${item.a}</p>
-      </details>
-    `).join('');
-  }
-
-  document.getElementById('faq-categories').style.display = 'none';
-  document.getElementById('faq-list').style.display = 'block';
-  document.getElementById('faq-back-btn').style.display = 'block';
-  document.getElementById('faq-title').innerText = `[${category}] 질문 목록`;
-}
-
-// 5. 전체 Q&A 창 토글
-function toggleFAQ() {
-  const faq = document.getElementById('faq');
-  if (faq.style.display === 'none') {
-    faq.style.display = 'block';
-    showCategoryMenu(); // 열 때 항상 메뉴판부터
-    faq.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    faq.style.display = 'none';
-  }
-}
-
-// 페이지 로드 시 초기화 (renderFAQ 삭제하고 showCategoryMenu만 남겨둡니다)
-window.onload = function() {
-  // 초기 로딩 시 특별히 할 일은 없으나 토글 시 showCategoryMenu를 호출하므로 비워둬도 무방합니다.
-};
-
-  function showPendingMessage(event) {
-  event.preventDefault(); // 링크 클릭 시 페이지 상단으로 튕기는 현상 방지
-  document.getElementById('pending-modal').style.display = 'flex';
-}
-
-function closePendingMessage() {
-  document.getElementById('pending-modal').style.display = 'none';
-}
-
-// 1. 내선번호 데이터 (여기에 선생님들 성함과 번호를 쭉 추가하세요)
-const phoneData = [
-  // 선생님 데이터
-  { name: "김준홍", ext: "450", full: "031-547-1450" },
-{ name: "박경원", ext: "453", full: "031-547-1453" },
-{ name: "김미아", ext: "455", full: "031-547-1455" },
-{ name: "이병철", ext: "462", full: "031-547-1462" },
-{ name: "장경원", ext: "463", full: "031-547-1463" },
-{ name: "신미항", ext: "459", full: "031-547-1459" },
-{ name: "이주연", ext: "457", full: "031-547-1457" },
-{ name: "한지영", ext: "458", full: "031-547-1458" },
-{ name: "임현정", ext: "419", full: "031-547-1419" },
-{ name: "김선화", ext: "410", full: "031-547-1410" },
-{ name: "현선신", ext: "420", full: "031-547-1420" },
-{ name: "정수현", ext: "430", full: "031-547-1430" },
-{ name: "이희성", ext: "421", full: "031-547-1421" },
-{ name: "이희진", ext: "428", full: "031-547-1428" },
-{ name: "반미리", ext: "418", full: "031-547-1418" },
-{ name: "곽윤정", ext: "411", full: "031-547-1411" },
-{ name: "윤홍인", ext: "456", full: "031-547-1456" },
-{ name: "남은복", ext: "424", full: "031-547-1424" },
-{ name: "이하영", ext: "454", full: "031-547-1454" },
-{ name: "여별희", ext: "433", full: "031-547-1433" },
-{ name: "최미애", ext: "437", full: "031-547-1437" },
-{ name: "조승아", ext: "435", full: "031-547-1435" },
-{ name: "박지민", ext: "427", full: "031-547-1427" },
-{ name: "이지선", ext: "431", full: "031-547-1431" },
-{ name: "김혜령", ext: "414", full: "031-547-1414" },
-{ name: "류혜윤", ext: "426", full: "031-547-1426" },
-{ name: "김미정", ext: "471", full: "031-547-1471" },
-{ name: "장봉순", ext: "409", full: "031-547-1409" },
-{ name: "진희영", ext: "417", full: "031-547-1417" },
-{ name: "윤상민", ext: "429", full: "031-547-1429" },
-{ name: "이주아", ext: "432", full: "031-547-1432" },
-{ name: "한소현", ext: "412", full: "031-547-1412" },
-{ name: "박미영", ext: "436", full: "031-547-1436" },
-{ name: "박원석", ext: "434", full: "031-547-1434" },
-{ name: "강자영", ext: "423", full: "031-547-1423" },
-{ name: "국동근", ext: "415", full: "031-547-1415" },
-{ name: "문금숙", ext: "451", full: "031-547-1451" },
-{ name: "김빛나", ext: "468", full: "031-547-1468" },
-{ name: "장승훈", ext: "464", full: "031-547-1464" },
-{ name: "한윤희", ext: "465", full: "031-547-1465" },
-{ name: "신한나", ext: "413", full: "031-547-1413" },
-{ name: "임소현", ext: "452", full: "031-547-1452" },
-{ name: "안하은", ext: "422", full: "031-547-1422" },
-{ name: "한지윤", ext: "416", full: "031-547-1416" },
-{ name: "이현아", ext: "425", full: "031-547-1425" },
-{ name: "한희라", ext: "401", full: "031-547-1401" },
-{ name: "김현희", ext: "402", full: "031-547-1402" },
-{ name: "박수경", ext: "403", full: "031-547-1403" },
-{ name: "전미화", ext: "404", full: "031-547-1404" },
-{ name: "조은하", ext: "406", full: "031-547-1406" },
-{ name: "김준수", ext: "405", full: "031-547-1405" },
-
-  // 특별실 데이터 (예시 번호를 적어두었으니 실제 번호로 수정하세요!)
- { name: "btl실", ext: "498", full: "031-547-1498" },
-{ name: "급식실", ext: "408", full: "031-547-1408" },
-{ name: "방송실", ext: "483", full: "031-547-1483" },
-{ name: "매여울포럼실", ext: "480", full: "031-547-1480" },
-{ name: "시청각실", ext: "481", full: "031-547-1481" },
-{ name: "성적처리실", ext: "482", full: "031-547-1482" },
-{ name: "발간실", ext: "407", full: "031-547-1407" },
-{ name: "미래정보실", ext: "485", full: "031-547-1485" },
-{ name: "미술실", ext: "486", full: "031-547-1486" },
-{ name: "민원면담실", ext: "439", full: "031-547-1439" },
-{ name: "과학실", ext: "487", full: "031-547-1487" },
-{ name: "컴퓨터실", ext: "493", full: "031-547-1493" },
-{ name: "기술가정실", ext: "491", full: "031-547-1491" },
-{ name: "음악실", ext: "492", full: "031-547-1492" }
-
-  // ... 이런 방식으로 쭉 추가하시면 됩니다.
-];
-
-// 2. 검색 함수
-function searchPhone() {
-  const keyword = document.getElementById('phone-input').value.trim();
-  const resultArea = document.getElementById('phone-result');
-  
-  if (!keyword) {
-    resultArea.innerHTML = '<p class="search-guide">성함을 입력하시면 번호가 나타납니다.</p>';
-    return;
-  }
-
-  const person = phoneData.find(p => p.name.includes(keyword));
-
-  if (person) {
-    resultArea.innerHTML = `
-      <div class="result-card">
-        <div class="name">${person.name} 선생님</div>
-        <div class="numbers">
-          내선: <span class="highlight-num">${person.ext}</span> | 
-          외부이용시: <span class="highlight-num">${person.full}</span>
-        </div>
-      </div>
-    `;
-  } else {
-    resultArea.innerHTML = '<p class="search-guide">검색 결과가 없습니다.</p>';
-  }
-}
-
-// 3. 토글 함수
-function togglePhone() {
-  const section = document.getElementById('phone-section');
-  if (section.style.display === 'none') {
-    section.style.display = 'block';
-    document.getElementById('phone-input').focus(); // 열자마자 바로 입력 가능하게
-    section.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    section.style.display = 'none';
-  }
-}
-</script>
 </html>
