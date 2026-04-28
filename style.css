@@ -444,3 +444,15 @@ body::before {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* 헤더 제목 스타일 */
+.header-logo {
+  text-decoration: none; /* 밑줄 제거 */
+  color: white;           /* 글자색 흰색 유지 */
+  cursor: pointer;        /* 마우스 커서를 손가락 모양으로 */
+  transition: opacity 0.2s;
+}
+
+.header-logo:hover {
+  opacity: 0.8;           /* 마우스 올렸을 때 살짝 흐려지는 효과 */
+}
