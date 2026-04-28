@@ -361,7 +361,7 @@ async function loadTodayMeal() {
 
   try {
     // 깃허브에 올린 json 파일을 비동기로 읽어옵니다
-    const response = await fetch('meal_data.json?v=' + new date().getTime());
+    const response = await fetch('meal_data.json?v=' + new Date().getTime());
     if(!response.ok) throw new Error('파일 없음');
     const data = await response.json();
 
