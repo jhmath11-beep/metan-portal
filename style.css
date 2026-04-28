@@ -623,3 +623,36 @@ body::before {
   transition: transform 0.3s ease; /* 기본 상태에도 트랜지션 추가 */
   overflow: hidden; /* 확대 시 영역 밖으로 안 나가게 */
 }
+
+/* 급식 카드 전용 스타일 */
+.meal-card {
+  border-left: 5px solid #ff9f43; /* 급식 카드는 오렌지색 포인트 */
+}
+
+.meal-date-text {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.meal-container {
+  padding: 15px;
+  background-color: #fffaf0;
+  border-radius: 12px;
+  min-height: 80px;
+  line-height: 1.8;
+  color: #4b5563;
+  font-weight: 500;
+  text-align: center;
+}
+
+.meal-item {
+  display: inline-block;
+  margin: 2px 8px;
+  word-break: keep-all;
+}
+
+.meal-loading {
+  color: #9ca3af;
+  font-style: italic;
+}
