@@ -51,18 +51,24 @@
       </div>
     </section>
 
- <section id="meal-section" class="notice-section">
+<section id="meal-section" class="notice-section">
   <div class="notice-card meal-card">
     <div class="notice-header">
       <span class="notice-icon">🍱</span>
       <h3 id="meal-title">오늘의 급식</h3>
-      <span id="meal-date-display" class="meal-date-text"></span>
+      <div class="meal-controls" style="display: flex; align-items: center; gap: 10px; margin-left: auto;">
+        <select id="meal-date-select" onchange="changeMealDate(this.value)" style="padding: 5px; border-radius: 5px; border: 1px solid #ddd; font-size: 0.85rem;">
+          <option value="">날짜 선택</option>
+        </select>
+        <button onclick="loadTodayMeal()" style="background: none; border: none; cursor: pointer; font-size: 1.2rem;" title="새로고침">🔄</button>
+      </div>
     </div>
     <div id="meal-display-area" class="meal-container">
       <p class="meal-loading">식단을 불러오는 중...</p>
     </div>
   </div>
 </section>
+
 
     <section id="faq" class="notice-section" style="display: none;">
       <div class="notice-card">
@@ -347,43 +353,62 @@
 
 window.addEventListener('DOMContentLoaded', loadTodayMeal);
 
+// 전역 변수로 데이터 보관 (날짜 선택 시 다시 불러오지 않기 위해)
+let cachedMealData = null;
+
+window.addEventListener('DOMContentLoaded', loadTodayMeal);
+
 async function loadTodayMeal() {
   const displayArea = document.getElementById('meal-display-area');
-  const dateDisplay = document.getElementById('meal-date-display');
+  const dateSelect = document.getElementById('meal-date-select');
   
+  // 오늘 날짜 구하기
   const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const todayKey = `${year}${month}${day}`;
-  
-  dateDisplay.innerText = `${month}월 ${day}일`;
+  const todayKey = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
 
   try {
-    // 캐시 방지를 위해 타임스탬프를 붙여서 최신 파일을 가져옵니다.
     const response = await fetch('meal_data.json?v=' + new Date().getTime());
-    
-    if(!response.ok) {
-        displayArea.innerHTML = "meal_data.json 파일을 찾을 수 없습니다.";
-        return;
+    if(!response.ok) throw new Error('파일 없음');
+    cachedMealData = await response.json();
+
+    // 날짜 선택(Select) 옵션 만들기 (처음 한 번만)
+    if (dateSelect.options.length <= 1) {
+      Object.keys(cachedMealData).sort().forEach(date => {
+        const option = document.createElement('option');
+        option.value = date;
+        // 20260428 -> 04.28 형식으로 표시
+        option.text = `${date.substring(4, 6)}.${date.substring(6, 8)}`;
+        if (date === todayKey) option.selected = true; // 오늘 날짜 자동 선택
+        dateSelect.appendChild(option);
+      });
     }
 
-    const data = await response.json();
-
-    if (data[todayKey]) {
-      const menu = data[todayKey];
-      const formattedMenu = menu.split(',').map(item => `<span class="meal-item">${item.trim()}</span>`).join('');
-      displayArea.innerHTML = `<div class="meal-grid">${formattedMenu}</div>`;
-    } else {
-      // 날짜가 없을 때 구체적인 날짜를 화면에 보여줌
-      displayArea.innerHTML = `오늘 날짜(${todayKey})의 데이터가 JSON 파일에 없습니다.`;
-    }
+    displayMeal(todayKey);
   } catch (error) {
-    // JSON 파일에 쉼표가 빠지는 등 오타가 있을 때 발생
     console.error("식단 로드 오류:", error);
-    displayArea.innerHTML = "JSON 파일 형식이 잘못되었거나 읽을 수 없습니다.";
+    displayArea.innerHTML = "식단 데이터를 불러올 수 없습니다.";
   }
 }
+
+// 특정 날짜의 식단을 화면에 표시하는 함수
+function displayMeal(key) {
+  const displayArea = document.getElementById('meal-display-area');
+  if (cachedMealData && cachedMealData[key]) {
+    const menu = cachedMealData[key];
+    const formattedMenu = menu.split(',').map(item => `<span class="meal-item">${item.trim()}</span>`).join('');
+    displayArea.innerHTML = `<div class="meal-grid">${formattedMenu}</div>`;
+  } else {
+    displayArea.innerHTML = "해당 날짜의 식단 정보가 없습니다. 🏖️";
+  }
+}
+
+// 셀렉트 박스에서 날짜를 변경했을 때 호출
+function changeMealDate(selectedDate) {
+  if (selectedDate) {
+    displayMeal(selectedDate);
+  }
+}
+
 
 
    // 페이지 로드 시 저장된 테마 확인
