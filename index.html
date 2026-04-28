@@ -189,11 +189,40 @@
     /* 스크립트 부분은 선생님의 데이터를 완벽하게 보존하기 위해 
        기존에 쓰시던 내용을 그대로 유지하시면 됩니다. */
 
+    // 모든 퀵링크 섹션을 한꺼번에 제어하는 통합 함수
+function closeAllQuickLinks() {
+  const sections = ['notice', 'faq', 'phone-section'];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+}
+
+// 급식 섹션 가시성 제어 함수
+function updateMealVisibility() {
+  const notice = document.getElementById('notice').style.display;
+  const faq = document.getElementById('faq').style.display;
+  const phone = document.getElementById('phone-section').style.display;
+  const mealSection = document.getElementById('meal-section');
+
+  // 하나라도 열려 있으면 급식을 숨김 (none), 모두 닫혀 있으면 보임 (block)
+  if (notice === 'block' || faq === 'block' || phone === 'block') {
+    mealSection.style.display = 'none';
+  } else {
+    mealSection.style.display = 'block';
+  }
+}
+
     function toggleNotice() {
-      const notice = document.getElementById('notice');
-      notice.style.display = (notice.style.display === 'none') ? 'block' : 'none';
-      if(notice.style.display === 'block') notice.scrollIntoView({ behavior: 'smooth' });
-    }
+  const target = document.getElementById('notice');
+  const isOpening = target.style.display === 'none';
+  
+  closeAllQuickLinks(); // 일단 다 닫고
+  if (isOpening) target.style.display = 'block'; // 열어야 할 때만 연다
+  
+  updateMealVisibility(); // 급식 상태 업데이트
+  if (isOpening) target.scrollIntoView({ behavior: 'smooth' });
+}
 
     const faqData = [
       { category: "복무", q: "제41조연수의 결재라인은 어떻게 되나요?", a: "본인 - 연구부장 - 교감" },
@@ -237,16 +266,20 @@
       document.getElementById('faq-title').innerText = `[${category}] 질문 목록`;
     }
 
-    function toggleFAQ() {
-      const faq = document.getElementById('faq');
-      if (faq.style.display === 'none') {
-        faq.style.display = 'block';
-        showCategoryMenu();
-        faq.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        faq.style.display = 'none';
-      }
-    }
+   // 2. FAQ 토글
+function toggleFAQ() {
+  const target = document.getElementById('faq');
+  const isOpening = target.style.display === 'none';
+  
+  closeAllQuickLinks();
+  if (isOpening) {
+    target.style.display = 'block';
+    showCategoryMenu(); // FAQ는 메뉴 초기화 필요
+  }
+  
+  updateMealVisibility();
+  if (isOpening) target.scrollIntoView({ behavior: 'smooth' });
+}
 
     const phoneData = [
       { name: "김준홍", ext: "450", full: "031-547-1450" }, { name: "박경원", ext: "453", full: "031-547-1453" },
@@ -313,16 +346,20 @@
   }
 }
 
-    function togglePhone() {
-      const section = document.getElementById('phone-section');
-      if (section.style.display === 'none') {
-        section.style.display = 'block';
-        document.getElementById('phone-input').focus();
-        section.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        section.style.display = 'none';
-      }
-    }
+   // 3. 내선번호 토글
+function togglePhone() {
+  const target = document.getElementById('phone-section');
+  const isOpening = target.style.display === 'none';
+  
+  closeAllQuickLinks();
+  if (isOpening) {
+    target.style.display = 'block';
+    document.getElementById('phone-input').focus();
+  }
+  
+  updateMealVisibility();
+  if (isOpening) target.scrollIntoView({ behavior: 'smooth' });
+}
 
     // 1. 전화걸기 확인 팝업 띄우기
     function confirmCall(name, number) {
