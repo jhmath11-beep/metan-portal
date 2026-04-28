@@ -9,13 +9,6 @@
 <body>
   <header class="hero">
   <div class="wrap" style="position: relative;">
-    <div class="dark-mode-container" style="position: absolute; top: -10px; right: 0;">
-      <button onclick="toggleDarkMode()" id="dark-mode-btn" 
-              style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">
-        🌙 야간 모드
-      </button>
-    </div>
-    
     <h1 style="margin-top: 20px;"><a href="#" onclick="location.reload(); return false;" class="header-logo">매탄중학교 업무포털</a></h1>
     <p>교무부 업무, 학교 규정, 예약, 주요 도구를 한 곳에서 이용하세요.</p>
   </div>
@@ -420,30 +413,6 @@ function changeMealDate(selectedDate) {
     displayMeal(selectedDate);
   }
 }
-
-
-
-   // 페이지 로드 시 저장된 테마 확인
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  document.getElementById('dark-mode-btn').innerText = '☀️ 주간 모드';
-}
-
-function toggleDarkMode() {
-  const btn = document.getElementById('dark-mode-btn');
-  let theme = document.documentElement.getAttribute('data-theme');
-
-  if (theme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', 'light');
-    btn.innerText = '🌙 야간 모드';
-  } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    localStorage.setItem('theme', 'dark');
-    btn.innerText = '☀️ 주간 모드';
-  }
-} 
     
   </script>
 </body>
