@@ -47,18 +47,23 @@ body::before {
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
+/* 헤더 제목 스타일 - 화면 크기에 맞춰 반응형으로 조절 */
 .hero h1 {
   margin: 0 0 12px;
-  font-size: 2.4rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  /* 기본 모바일 크기: 기존보다 약 10% 키움 */
+  font-size: 2.6rem; 
+  font-weight: 800; /* 좀 더 두껍게 해서 강조 */
+  letter-spacing: -1px;
+  line-height: 1.2;
 }
 
 .header-logo {
-  text-decoration: none !important; /* 밑줄 제거 고정 */
+  text-decoration: none !important;
   color: white;
   cursor: pointer;
   transition: opacity 0.2s;
+  /* 긴 제목이 모바일에서 줄바꿈될 때를 대비 */
+  word-break: keep-all; 
 }
 
 .header-logo:hover {
@@ -69,6 +74,22 @@ body::before {
   margin: 0;
   font-size: 1.1rem;
   opacity: 0.9;
+}
+
+/* 노트북 / PC 화면 (768px 이상) */
+@media (min-width: 768px) {
+  .hero h1 {
+    /* PC에서는 기존보다 확실히 더 크게 설정 */
+    font-size: 3.5rem; 
+    margin-bottom: 15px;
+  }
+}
+
+/* 아주 큰 모니터 환경 (1200px 이상) */
+@media (min-width: 1200px) {
+  .hero h1 {
+    font-size: 4rem;
+  }
 }
 
 /* 3. 퀵 링크 - 알약 형태 메뉴 (가로 스크롤 포함 원본 유지) */
