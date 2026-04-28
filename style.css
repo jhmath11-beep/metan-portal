@@ -584,14 +584,33 @@ body::before {
 }
 
 /* 모바일 대응 (화면이 좁아지면 다시 위아래로) */
+/* 모바일 대응 (화면 너비 768px 이하) */
 @media (max-width: 768px) {
   .bottom-services-container {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column; /* 위아래로 쌓기 */
+    text-align: center;     /* 글자 중앙 정렬 */
     gap: 20px;
+    align-items: center;    /* 자식 요소들(이미지, 텍스트)을 가로 중앙으로 정렬 */
   }
-  
+
+  .service-visual {
+    width: 100%;            /* 가로 영역 꽉 채우기 */
+    display: flex;
+    justify-content: center; /* 이미지를 가로 중앙에 배치 */
+  }
+
+  .service-logo-large {
+    width: 150px;           /* 모바일에서 보기 적당한 크기 */
+    height: auto;           /* 높이는 비율에 맞게 자동 조절 */
+    min-height: auto;       /* 데스크톱용 높이 설정 초기화 */
+  }
+
   .service-links-bottom {
-    justify-content: center;
+    justify-content: center; /* 버튼들을 가로 중앙으로 정렬 */
+  }
+
+  .service-title-area p {
+    margin: 5px auto 15px;  /* 문구도 중앙에 오도록 마진 조절 */
+    max-width: 280px;
   }
 }
