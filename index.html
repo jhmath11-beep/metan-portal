@@ -360,24 +360,31 @@ async function loadTodayMeal() {
   dateDisplay.innerText = `${month}월 ${day}일`;
 
   try {
-    // 깃허브에 올린 json 파일을 비동기로 읽어옵니다
+    // 캐시 방지를 위해 타임스탬프를 붙여서 최신 파일을 가져옵니다.
     const response = await fetch('meal_data.json?v=' + new Date().getTime());
-    if(!response.ok) throw new Error('파일 없음');
+    
+    if(!response.ok) {
+        displayArea.innerHTML = "meal_data.json 파일을 찾을 수 없습니다.";
+        return;
+    }
+
     const data = await response.json();
 
     if (data[todayKey]) {
       const menu = data[todayKey];
-      // 메뉴를 쉼표 기준으로 잘라서 알약 모양 버튼으로 변환
       const formattedMenu = menu.split(',').map(item => `<span class="meal-item">${item.trim()}</span>`).join('');
       displayArea.innerHTML = `<div class="meal-grid">${formattedMenu}</div>`;
     } else {
-      displayArea.innerHTML = "오늘은 급식 정보가 등록되지 않았습니다. 🏖️";
+      // 날짜가 없을 때 구체적인 날짜를 화면에 보여줌
+      displayArea.innerHTML = `오늘 날짜(${todayKey})의 데이터가 JSON 파일에 없습니다.`;
     }
   } catch (error) {
+    // JSON 파일에 쉼표가 빠지는 등 오타가 있을 때 발생
     console.error("식단 로드 오류:", error);
-    displayArea.innerHTML = "식단 데이터를 준비 중입니다.";
+    displayArea.innerHTML = "JSON 파일 형식이 잘못되었거나 읽을 수 없습니다.";
   }
 }
+
 
    // 페이지 로드 시 저장된 테마 확인
 const currentTheme = localStorage.getItem('theme');
