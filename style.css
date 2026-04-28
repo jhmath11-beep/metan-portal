@@ -668,3 +668,21 @@ body {
   border: 1px solid #e2e8f0; font-size: 0.95rem; font-weight: 600; 
   color: #1e3a8a; box-shadow: 0 2px 4px rgba(0,0,0,0.03); 
 }
+
+/* 날짜 선택 셀렉트 박스 스타일 */
+#meal-date-select {
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+[data-theme='dark'] #meal-date-select {
+  background-color: #334155;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+.meal-controls button:hover {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
