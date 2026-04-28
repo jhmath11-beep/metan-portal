@@ -624,35 +624,57 @@ body::before {
   overflow: hidden; /* 확대 시 영역 밖으로 안 나가게 */
 }
 
-/* 급식 카드 전용 스타일 */
+/* 급식 카드 스타일 */
 .meal-card {
-  border-left: 5px solid #ff9f43; /* 급식 카드는 오렌지색 포인트 */
+  border-left: 5px solid #0056b3; /* 신뢰감 있는 블루 */
+  background: #ffffff;
 }
 
-.meal-date-text {
-  margin-left: auto;
-  font-size: 0.9rem;
-  color: #666;
+.meal-link-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background: #f0f7ff;
+  border-radius: 15px;
+  border: 1px solid #dbeafe;
 }
 
-.meal-container {
-  padding: 15px;
-  background-color: #fffaf0;
-  border-radius: 12px;
-  min-height: 80px;
-  line-height: 1.8;
-  color: #4b5563;
-  font-weight: 500;
+.meal-info-box {
   text-align: center;
+  margin-bottom: 15px;
 }
 
-.meal-item {
-  display: inline-block;
-  margin: 2px 8px;
-  word-break: keep-all;
+.meal-guide-text {
+  font-size: 1rem;
+  color: #1e3a8a;
+  font-weight: 600;
+  margin: 0;
 }
 
-.meal-loading {
-  color: #9ca3af;
-  font-style: italic;
+.meal-sub-text {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.meal-homepage-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0056b3;
+  color: white !important;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
+  transition: all 0.2s ease;
+}
+
+.meal-homepage-btn:hover {
+  transform: translateY(-2px);
+  background-color: #004494;
+  box-shadow: 0 6px 18px rgba(0, 86, 179, 0.3);
 }
