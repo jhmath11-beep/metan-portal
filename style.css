@@ -245,23 +245,59 @@ body::before {
 }
 
 /* 업무 Q&A */
+/* 1. 질문 항목 전체 - 카드 형태로 구분 */
+.faq-item {
+  border: 1px solid #e5e7eb;  /* 테두리 추가 */
+  border-radius: 12px;        /* 둥근 모서리 */
+  margin-bottom: 12px;        /* [핵심] 질문들 사이의 간격 확보 */
+  background-color: #ffffff;  /* 배경색 */
+  overflow: hidden;           /* 모서리 정리 */
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* 은은한 그림자 */
+}
+
+/* 2. 질문 제목 부분 (클릭하는 영역) */
 .faq-item summary {
+  padding: 15px 20px;         /* 내부 여백을 늘려 클릭하기 편하게 */
   font-weight: 600;
   color: #1f2937;
   cursor: pointer;
-  position: relative;
-  padding-left: 25px;
   list-style: none;
+  position: relative;
+  padding-left: 35px;         /* Q 표시를 위한 왼쪽 여백 */
+  background-color: #ffffff;
 }
 
+/* 3. 질문 앞에 'Q.' 표시 */
+.faq-item summary::before {
+  content: 'Q.';
+  position: absolute;
+  left: 15px;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+/* 4. 답변 내용 부분 (펼쳐졌을 때) */
 .faq-item p {
-  padding: 12px 25px;
-  background-color: #f9fafb;
-  border-radius: 10px;
+  padding: 15px 20px 15px 35px; /* 내부 여백 조정 */
+  background-color: #f9fafb;    /* 답변 배경색을 다르게 함 */
+  border-top: 1px solid #f3f4f6; /* 질문과 답변 사이 구분선 */
   font-size: 0.95rem;
   color: #4b5563;
-  margin-top: 8px;
-  border-left: 3px solid #3b82f6;
+  margin: 0;                    /* 기본 마진 제거 */
+  line-height: 1.6;
+}
+
+/* 5. 마우스를 올렸을 때 살짝 강조 */
+.faq-item:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* 6. 질문을 클릭해서 열었을 때 질문 글자색 변경 */
+.faq-item[open] summary {
+  color: #3b82f6;
+  background-color: #eff6ff;
 }
 
 /* 내선번호 검색 */
