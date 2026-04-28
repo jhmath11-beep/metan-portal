@@ -270,5 +270,118 @@ window.onload = function() {
 function closePendingMessage() {
   document.getElementById('pending-modal').style.display = 'none';
 }
+
+// 1. 내선번호 데이터 (여기에 선생님들 성함과 번호를 쭉 추가하세요)
+const phoneData = [
+  // 선생님 데이터
+  { name: "김준홍", ext: "450", full: "031-547-1450" },
+{ name: "박경원", ext: "453", full: "031-547-1453" },
+{ name: "김미아", ext: "455", full: "031-547-1455" },
+{ name: "이병철", ext: "462", full: "031-547-1462" },
+{ name: "장경원", ext: "463", full: "031-547-1463" },
+{ name: "신미항", ext: "459", full: "031-547-1459" },
+{ name: "이주연", ext: "457", full: "031-547-1457" },
+{ name: "한지영", ext: "458", full: "031-547-1458" },
+{ name: "임현정", ext: "419", full: "031-547-1419" },
+{ name: "김선화", ext: "410", full: "031-547-1410" },
+{ name: "현선신", ext: "420", full: "031-547-1420" },
+{ name: "정수현", ext: "430", full: "031-547-1430" },
+{ name: "이희성", ext: "421", full: "031-547-1421" },
+{ name: "이희진", ext: "428", full: "031-547-1428" },
+{ name: "반미리", ext: "418", full: "031-547-1418" },
+{ name: "곽윤정", ext: "411", full: "031-547-1411" },
+{ name: "윤홍인", ext: "456", full: "031-547-1456" },
+{ name: "남은복", ext: "424", full: "031-547-1424" },
+{ name: "이하영", ext: "454", full: "031-547-1454" },
+{ name: "여별희", ext: "433", full: "031-547-1433" },
+{ name: "최미애", ext: "437", full: "031-547-1437" },
+{ name: "조승아", ext: "435", full: "031-547-1435" },
+{ name: "박지민", ext: "427", full: "031-547-1427" },
+{ name: "이지선", ext: "431", full: "031-547-1431" },
+{ name: "김혜령", ext: "414", full: "031-547-1414" },
+{ name: "류혜윤", ext: "426", full: "031-547-1426" },
+{ name: "김미정", ext: "471", full: "031-547-1471" },
+{ name: "장봉순", ext: "409", full: "031-547-1409" },
+{ name: "진희영", ext: "417", full: "031-547-1417" },
+{ name: "윤상민", ext: "429", full: "031-547-1429" },
+{ name: "이주아", ext: "432", full: "031-547-1432" },
+{ name: "한소현", ext: "412", full: "031-547-1412" },
+{ name: "박미영", ext: "436", full: "031-547-1436" },
+{ name: "박원석", ext: "434", full: "031-547-1434" },
+{ name: "강자영", ext: "423", full: "031-547-1423" },
+{ name: "국동근", ext: "415", full: "031-547-1415" },
+{ name: "문금숙", ext: "451", full: "031-547-1451" },
+{ name: "김빛나", ext: "468", full: "031-547-1468" },
+{ name: "장승훈", ext: "464", full: "031-547-1464" },
+{ name: "한윤희", ext: "465", full: "031-547-1465" },
+{ name: "신한나", ext: "413", full: "031-547-1413" },
+{ name: "임소현", ext: "452", full: "031-547-1452" },
+{ name: "안하은", ext: "422", full: "031-547-1422" },
+{ name: "한지윤", ext: "416", full: "031-547-1416" },
+{ name: "이현아", ext: "425", full: "031-547-1425" },
+{ name: "한희라", ext: "401", full: "031-547-1401" },
+{ name: "김현희", ext: "402", full: "031-547-1402" },
+{ name: "박수경", ext: "403", full: "031-547-1403" },
+{ name: "전미화", ext: "404", full: "031-547-1404" },
+{ name: "조은하", ext: "406", full: "031-547-1406" },
+{ name: "김준수", ext: "405", full: "031-547-1405" }
+
+  // 특별실 데이터 (예시 번호를 적어두었으니 실제 번호로 수정하세요!)
+ { name: "btl실", ext: "498", full: "031-547-1498" },
+{ name: "급식실", ext: "408", full: "031-547-1408" },
+{ name: "방송실", ext: "483", full: "031-547-1483" },
+{ name: "매여울포럼실", ext: "480", full: "031-547-1480" },
+{ name: "시청각실", ext: "481", full: "031-547-1481" },
+{ name: "성적처리실", ext: "482", full: "031-547-1482" },
+{ name: "발간실", ext: "407", full: "031-547-1407" },
+{ name: "미래정보실", ext: "485", full: "031-547-1485" },
+{ name: "미술실", ext: "486", full: "031-547-1486" },
+{ name: "민원면담실", ext: "439", full: "031-547-1439" },
+{ name: "과학실", ext: "487", full: "031-547-1487" },
+{ name: "컴퓨터실", ext: "493", full: "031-547-1493" },
+{ name: "기술가정실", ext: "491", full: "031-547-1491" },
+{ name: "음악실", ext: "492", full: "031-547-1492" }
+
+  // ... 이런 방식으로 쭉 추가하시면 됩니다.
+];
+
+// 2. 검색 함수
+function searchPhone() {
+  const keyword = document.getElementById('phone-input').value.trim();
+  const resultArea = document.getElementById('phone-result');
+  
+  if (!keyword) {
+    resultArea.innerHTML = '<p class="search-guide">성함을 입력하시면 번호가 나타납니다.</p>';
+    return;
+  }
+
+  const person = phoneData.find(p => p.name.includes(keyword));
+
+  if (person) {
+    resultArea.innerHTML = `
+      <div class="result-card">
+        <div class="name">${person.name} 선생님</div>
+        <div class="numbers">
+          내선: <span class="highlight-num">${person.ext}</span> | 
+          외부이용시: <span class="highlight-num">${person.full}</span>
+        </div>
+      </div>
+    `;
+  } else {
+    resultArea.innerHTML = '<p class="search-guide">검색 결과가 없습니다.</p>';
+  }
+}
+
+// 3. 토글 함수
+function togglePhone() {
+  const section = document.getElementById('phone-section');
+  if (section.style.display === 'none') {
+    section.style.display = 'block';
+    document.getElementById('phone-input').focus(); // 열자마자 바로 입력 가능하게
+    section.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    section.style.display = 'none';
+  }
+}
 </script>
 </html>
