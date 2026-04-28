@@ -337,6 +337,46 @@
     function closePendingMessage() {
       document.getElementById('pending-modal').style.display = 'none';
     }
+
+async function getSchoolMeal() {
+    const mealContent = document.getElementById('meal-content');
+    const mealDateEl = document.getElementById('meal-date');
+    
+    // 오늘 날짜 구하기 (YYYYMMDD 형식)
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const todayStr = `${year}${month}${day}`;
+    const displayDate = `${year}.${month}.${day}`;
+
+    // 경기도교육청(J10) / 매탄중학교(7530863) 설정
+    const ATPT_OFCDC_SC_CODE = "J10";
+    const SD_SCHUL_CODE = "7530863";
+    const API_URL = `https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}&MLSV_YMD=${todayStr}`;
+
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+
+        if (data.mealServiceDietInfo) {
+            // 메뉴 데이터 가공 (알레르기 번호 제거 등)
+            let menu = data.mealServiceDietInfo.row.DDISH_NM;
+            menu = menu.replace(/\([0-9\.]+\)/g, ""); // (1.2.3) 형태의 알레르기 번호 제거
+            menu = menu.replace(/<br\/>/g, " / ");    // 줄바꿈을 슬래시로 변경
+
+            mealDateEl.innerText = `${displayDate} 식단`;
+            mealContent.innerHTML = `<div class="meal-list">${menu}</div>`;
+        } else {
+            mealDateEl.innerText = displayDate;
+            mealContent.innerHTML = "오늘은 급식 정보가 없습니다. 🏖️";
+        }
+    } catch (error) {
+        console.error("급식 정보 로드 실패:", error);
+        mealContent.innerHTML = "급식 정보를 불러오지 못했습니다. (나이스 서버 확인 필요)";
+    }
+}
+    
   </script>
 
   <div id="call-confirm-modal" class="modal-overlay" style="display: none;">
