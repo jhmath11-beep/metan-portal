@@ -456,3 +456,58 @@ body::before {
 .header-logo:hover {
   opacity: 0.8;           /* 마우스 올렸을 때 살짝 흐려지는 효과 */
 }
+
+/* 내선번호 검색 스타일 */
+.phone-search-box {
+  margin-bottom: 20px;
+}
+
+#phone-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#phone-input:focus {
+  border-color: #3b82f6;
+}
+
+.phone-result-area {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-card {
+  text-align: center;
+  animation: fadeIn 0.3s;
+}
+
+.result-card .name { font-weight: bold; color: #1e3a8a; font-size: 1.1rem; }
+.result-card .numbers { margin-top: 8px; color: #4b5563; }
+.result-card .highlight-num { color: #3b82f6; font-weight: bold; }
+
+.search-guide { color: #9ca3af; font-size: 0.9rem; }
+
+/* 검색창 상세 가이드 문구 스타일 */
+.search-example {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6b7280; /* 은은한 회색 */
+  line-height: 1.5;
+  padding-left: 5px;
+  word-break: keep-all; /* 단어 단위로 줄바꿈되어 깔끔하게 보임 */
+}
+
+/* 검색창 포커스 시 가이드 문구 강조 (선택 사항) */
+#phone-input:focus + .search-example {
+  color: #3b82f6; /* 입력 중일 때 파란색으로 살짝 강조 */
+}
