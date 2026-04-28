@@ -87,33 +87,40 @@ body::before {
 }
 
 /* 4. 카드 그리드 수정 */
+/* 4. 카드 그리드 - 4개 카드 전용 밸런스 */
 .card-grid {
   display: grid;
-  /* 4개 카드가 나란히 나오도록 */
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+  /* 4개 카드가 공간을 꽉 채우도록 설정 */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
-  align-items: start; /* 각 카드가 자기 높이만큼만 차지하게 함 */
+  margin: 24px 0 60px;
+  align-items: stretch; /* 카드 높이를 서로 맞춤 */
 }
 
-/* 5개 카드를 위한 데스크톱 최적화 */
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .card-grid {
-    grid-template-columns: repeat(4, 1fr); /* 일단 4열로 배치 */
+    grid-template-columns: repeat(4, 1fr); /* 데스크톱에서 무조건 4열 */
   }
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
   background: white;
   border-radius: 20px;
-  padding: 20px; /* 패딩을 살짝 줄여서 콤팩트하게 */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
   border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
   transition: all 0.3s ease;
-  height: auto; /* 내용만큼만 높이 차지 */
+}
+
+.card img {
+  width: 100%;
+  height: 160px; /* 이미지 높이 통일 */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
 }
 
 /* [중요] 자주 쓰는 서비스 전용 스타일 */
