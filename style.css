@@ -519,47 +519,70 @@ body::before {
   color: #3b82f6; /* 입력 중일 때 파란색으로 살짝 강조 */
 }
 
-/* 하단 바 형태의 서비스 섹션 */
+/* 하단 바 전체 섹션 */
 .bottom-services {
   background-color: #ffffff;
   border-top: 1px solid #e5e7eb;
-  padding: 30px 0;
-  margin-top: 50px;
+  padding: 40px 0;
+  margin-top: 60px;
 }
 
-.bottom-services-inner {
+/* 내부 컨테이너 배치 */
+.bottom-services-container {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 40px;           /* 이미지와 텍스트 사이 간격 */
+}
+
+/* 왼쪽: 이미지 스타일 */
+.service-visual {
+  flex-shrink: 0; /* 이미지 크기 유지 */
+}
+
+.service-logo-large {
+  width: 120px;    /* 크기를 120px로 키움 (기존 30px 대비 4배) */
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* 오른쪽: 콘텐츠 영역 */
+.service-content {
+  flex-grow: 1;
 }
 
 .service-title-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .service-title-area h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #1e3a8a;
+  font-weight: 700;
 }
 
-.service-icon-mini {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
+.service-title-area p {
+  margin: 5px 0 0;
+  font-size: 0.85rem;
+  color: #6b7280;
 }
 
 .service-links-bottom {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* 모바일에서는 세로로 정렬될 수 있도록 */
+/* 모바일 대응 (화면이 좁아지면 다시 위아래로) */
 @media (max-width: 768px) {
-  .bottom-services {
-    padding: 20px 0;
+  .bottom-services-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .service-links-bottom {
+    justify-content: center;
   }
 }
