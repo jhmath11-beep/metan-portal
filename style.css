@@ -520,3 +520,48 @@ body::before {
 #phone-input:focus + .search-example {
   color: #3b82f6; /* 입력 중일 때 파란색으로 살짝 강조 */
 }
+
+/* 하단 바 형태의 서비스 섹션 */
+.bottom-services {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 30px 0;
+  margin-top: 50px;
+}
+
+.bottom-services-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.service-title-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.service-title-area h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1e3a8a;
+}
+
+.service-icon-mini {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.service-links-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 모바일에서는 세로로 정렬될 수 있도록 */
+@media (max-width: 768px) {
+  .bottom-services {
+    padding: 20px 0;
+  }
+}
