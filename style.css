@@ -93,7 +93,7 @@ body::before {
   /* 4개 카드가 화면 너비를 균등하게 4등분하도록 설정 */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
-  margin: 24px 0 60px;
+  margin: 40px 0 60px;
   align-items: stretch; /* 카드들의 높이를 서로 똑같이 맞춤 */
 }
 
