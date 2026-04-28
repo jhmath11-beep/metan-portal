@@ -461,3 +461,50 @@ body::before {
   color: #3b82f6;
   transform: translateY(-2px); /* 살짝 떠오르는 효과 */
 }
+
+/* 공지사항 뱃지 공통 스타일 (둥근 알약 형태) */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 50px;    /* 완전 둥근 형태 */
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: center;
+  margin-left: auto;      /* 모바일에서 오른쪽 정렬 유지 */
+}
+
+/* 1. 행사 (Event) - 부드러운 빨간색 계열 */
+.badge-event {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* 2. 교육/시험 (Edu) - 따뜻한 노란색/주황색 계열 */
+.badge-edu {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+/* 3. 회의 (Meeting) - 신뢰감을 주는 파란색 계열 */
+.badge-meeting {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+/* [추가] 모바일에서 공지사항 리스트 가독성 높이기 */
+.notice-list li {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 10px;
+}
+
+.notice-list .content {
+  flex: 1; /* 글자 부분이 공간을 다 차지하게 함 */
+  font-size: 0.9rem;
+}
