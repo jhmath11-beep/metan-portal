@@ -49,21 +49,26 @@ body::before {
 
 /* 헤더 제목 스타일 - 화면 크기에 맞춰 반응형으로 조절 */
 .hero h1 {
-  margin: 0 0 12px;
-  /* 기본 모바일 크기: 기존보다 약 10% 키움 */
-  font-size: 2.6rem; 
-  font-weight: 800; /* 좀 더 두껍게 해서 강조 */
-  letter-spacing: -1px;
-  line-height: 1.2;
+  margin: 0 0 15px;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .header-logo {
+  display: inline-flex;
+  align-items: center;    /* 수직 중앙 정렬 */
+  justify-content: center;
+  gap: 8px;               /* [수정] 모바일에서 한 줄을 위해 간격 축소 */
   text-decoration: none !important;
   color: white;
   cursor: pointer;
-  transition: opacity 0.2s;
-  /* 긴 제목이 모바일에서 줄바꿈될 때를 대비 */
-  word-break: keep-all; 
+  
+  /* [핵심] 모바일 한 줄 세팅 */
+  font-size: 1.8rem;      /* [수정] 두 줄 방지를 위해 크기를 살짝 조절 */
+  font-weight: 800;
+  letter-spacing: -1.5px; /* [수정] 자간을 더 좁혀서 한 줄에 넣음 */
+  white-space: nowrap;    /* [핵심] 절대 줄바꿈 되지 않도록 고정 */
 }
 
 .header-logo:hover {
@@ -89,21 +94,22 @@ body::before {
 
 /* 2. 교표 이미지 - 제목 높이에 맞춰 자연스럽게 축소 */
 .header-symbol {
-  height: 50px;           /* [수정] 제목보다 살짝 작거나 비슷하게 조절 */
+  height: 38px;           /* [수정] 1.8rem 글자 높이와 가장 잘 어울리는 사이즈 */
   width: auto;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-  transition: transform 0.3s ease;
+  flex-shrink: 0;         /* 이미지가 찌그러지지 않게 보호 */
 }
 
 /* 노트북 / PC 화면 (768px 이상) 최적화 */
 @media (min-width: 768px) {
   .header-logo {
-    font-size: 3.8rem;    /* PC에서 제목을 시원하게 키움 */
-    gap: 20px;
+    font-size: 3.5rem;    /* PC에서는 시원하게 다시 키움 */
+    gap: 18px;
+    letter-spacing: -1px;
   }
   
   .header-symbol {
-    height: 70px;         /* [수정] PC에서도 제목의 위엄을 방해하지 않는 크기 */
+    height: 65px;         /* PC 글자 높이에 맞게 확대 */
   }
 }
 
