@@ -705,3 +705,55 @@ body::before {
   background-color: #2563eb;
   transform: translateY(-1px);
 }
+
+/* 검색 결과 카드 디자인 */
+.result-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.result-card .name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.phone-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.phone-item {
+  background: #f9fafb;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #f3f4f6;
+}
+
+.phone-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.phone-number {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #3b82f6;
+}
+
+.phone-number.external {
+  color: #10b981; /* 외부 번호는 초록색으로 차별화 */
+  text-decoration: underline;
+  cursor: pointer;
+}
