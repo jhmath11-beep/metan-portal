@@ -333,22 +333,26 @@ function toggleFAQ() {
   const person = phoneData.find(p => p.name.includes(keyword));
 
   if (person) {
-    // 따옴표 오류를 방지하기 위해 HTML을 아주 단순하게 작성했습니다.
-    let html = '<div class="result-card">';
-    html += '<div class="name">' + person.name + ' 선생님</div>';
-    html += '<div class="numbers">';
-    html += '내선: <span class="highlight-num">' + person.ext + '</span> | ';
-    html += '외부: <span class="highlight-num" style="cursor:pointer; text-decoration:underline; color:#3b82f6;" ';
-    // 이 부분이 핵심입니다. 큰따옴표 안에 작은따옴표를 명확히 구분했습니다.
-    html += 'onclick="confirmCall(\'' + person.name + '\', \'' + person.full + '\')">';
-    html += person.full + '</span>';
-    html += '</div></div>';
-    
-    resultArea.innerHTML = html;
+    resultArea.innerHTML = `
+      <div class="result-card">
+        <span class="name">${person.name} 선생님</span>
+        <div class="phone-info-grid">
+          <div class="phone-item">
+            <span class="phone-label">내선번호</span>
+            <span class="phone-number">${person.ext}</span>
+          </div>
+          <div class="phone-item" onclick="confirmCall('${person.name}', '${person.full}')">
+            <span class="phone-label">외부번호 (클릭시 연결)</span>
+            <span class="phone-number external">${person.full}</span>
+          </div>
+        </div>
+      </div>
+    `;
   } else {
     resultArea.innerHTML = '<p class="search-guide">검색 결과가 없습니다.</p>';
   }
 }
+
 
    // 3. 내선번호 토글
 function togglePhone() {
