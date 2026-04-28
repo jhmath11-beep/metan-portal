@@ -70,6 +70,33 @@ body::before {
   opacity: 0.8;
 }
 
+/* 헤더 로고와 교표 정렬 */
+.header-logo {
+  display: inline-flex;    /* 이미지와 글자를 나란히 배치 */
+  align-items: center;     /* 수직 중앙 정렬 */
+  justify-content: center;
+  gap: 15px;               /* 교표와 글자 사이 간격 */
+  text-decoration: none !important;
+  color: white;
+}
+
+/* 교표 이미지 스타일 */
+.header-symbol {
+  height: 50px;            /* 모바일 기준 교표 높이 */
+  width: auto;             /* 비율 유지 */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); /* 살짝 입체감 부여 */
+}
+
+/* 노트북 / PC 화면 (768px 이상) */
+@media (min-width: 768px) {
+  .header-symbol {
+    height: 70px;          /* PC에서는 교표를 좀 더 크게 */
+  }
+  .header-logo {
+    gap: 20px;             /* PC에서는 간격도 조금 더 넓게 */
+  }
+}
+
 .hero p {
   margin: 0;
   font-size: 1.1rem;
