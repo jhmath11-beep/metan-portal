@@ -321,3 +321,65 @@ body::before {
   border: 1px solid #e2e8f0; font-size: 0.95rem; font-weight: 600; 
   color: #1e3a8a; box-shadow: 0 2px 4px rgba(0,0,0,0.03); 
 }
+
+/* --- 팝업 모달 기본 디자인 (필수) --- */
+
+/* 1. 팝업 전체 배경 (어둡고 흐릿한 화면) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* 배경 어둡게 */
+  display: none; /* 평소에는 숨김 */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 다른 모든 요소보다 앞에 노출 */
+  backdrop-filter: blur(4px); /* 배경 흐림 효과 */
+}
+
+/* 2. 팝업 하얀색 상자 */
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: min(400px, 90%); /* 모바일에서는 너비의 90% */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* 3. 팝업 내부 아이콘과 글자 */
+.modal-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.modal-content h3 {
+  margin: 0 0 10px;
+  color: #1e3a8a;
+}
+
+.modal-content p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* 4. 팝업 내 버튼들 */
+.modal-close-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-close-btn:hover {
+  background-color: #2563eb;
+}
