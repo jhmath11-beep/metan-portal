@@ -680,3 +680,22 @@ body::before {
   flex: 1; /* 글자 부분이 공간을 다 차지하게 함 */
   font-size: 0.9rem;
 }
+
+/* TODAY 버튼 디자인 */
+.today-btn {
+  background-color: #3b82f6; /* 매탄중 포인트 블루 */
+  color: white;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.today-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
