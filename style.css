@@ -211,6 +211,66 @@ body::before {
   border-top: 1px solid #e5e7eb;
 }
 
+/* 1. 팝업창 하단 닫기 버튼 (확인 후 닫기, 창 닫기 등) */
+.notice-footer {
+  display: flex;
+  justify-content: center; /* 가운데 정렬로 변경하여 안정감 부여 */
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.close-footer-btn {
+  width: 100%;             /* 모바일에서 누르기 편하게 꽉 채움 */
+  max-width: 200px;        /* 너무 넓어지지 않게 제한 */
+  padding: 12px 20px;
+  background-color: #f1f5f9; /* 연한 회색 배경 */
+  color: #475569;          /* 진한 회색 글자 */
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-footer-btn:hover {
+  background-color: #e2e8f0; /* 마우스 올리면 약간 더 진하게 */
+  color: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* 2. FAQ 뒤로가기 버튼 (상단 왼쪽 배치) */
+.back-btn {
+  background-color: #eff6ff; /* 연한 파란색 배경 */
+  color: #3b82f6;          /* 매탄중 포인트 컬러 */
+  border: 1px solid #dbeafe;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;       /* 오른쪽 정렬 유지 */
+}
+
+.back-btn:hover {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+/* 스마트폰 전용 추가 보정 */
+@media (max-width: 600px) {
+  .close-footer-btn {
+    font-size: 1rem;       /* 모바일에서 글자 조금 더 크게 */
+    padding: 14px;         /* 터치 영역 확대 */
+  }
+}
+
 /* 공지사항 섹션 */
 .notice-card {
   background: white;
