@@ -614,3 +614,12 @@ body::before {
     max-width: 280px;
   }
 }
+
+.card:hover img {
+  transform: scale(1.03); /* 이미지만 살짝 확대 */
+  transition: transform 0.3s ease;
+}
+.card img {
+  transition: transform 0.3s ease; /* 기본 상태에도 트랜지션 추가 */
+  overflow: hidden; /* 확대 시 영역 밖으로 안 나가게 */
+}
