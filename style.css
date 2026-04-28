@@ -1,47 +1,20 @@
-/* style.css 전체 코드 */
-
-/* 1. 기본 설정 및 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
 
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  /* [★수정] 주간모드 배경색을 예전의 밝은 회색으로 원복 */
-  --bg-color: #f0f2f5; 
-  --card-bg: #ffffff;
-  --text-main: #1f2937;
-  --text-sub: #6b7280;
-  --border-color: #e5e7eb;
-}
-
-[data-theme='dark'] {
-  --bg-color: #0f172a;
-  --card-bg: #1e293b;
-  --text-main: #f1f5f9;
-  --text-sub: #94a3b8;
-  --border-color: #334155;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'Pretendard', Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
+  font-family: 'Pretendard', sans-serif;
+  background-color: #f0f2f5; /* 원래의 밝은 배경색 */
+  color: #1f2937;
   line-height: 1.6;
-  position: relative;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 /* 교표 배경 */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; width: 100%; height: 100%;
   z-index: -1;
   background-image: url('images/교표.png');
   background-repeat: repeat;
@@ -50,155 +23,113 @@ body::before {
   opacity: 0.05;
 }
 
-[data-theme='dark'] body::before {
-  opacity: 0.02;
-}
+.wrap { width: min(1100px, 92%); margin: 0 auto; }
 
-.wrap {
-  width: min(1100px, 92%);
-  margin: 0 auto;
-  position: relative;
-}
-
-/* 2. 헤더 */
+/* 헤더 - 밑줄 제거 및 디자인 복구 */
 .hero {
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   color: white;
-  padding: 60px 0;
+  padding: 50px 0;
   text-align: center;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  position: relative;
 }
 
-[data-theme='dark'] .hero {
-  background: linear-gradient(135deg, #020617 0%, #1e1b4b 100%);
-}
-
-@media (max-width: 600px) {
-  .hero { padding: 75px 0 40px; }
-}
-
-.hero h1 {
-  margin: 0 0 12px;
-  font-size: 2.4rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-/* [★수정] 제목 밑줄 확실히 제거 */
 .header-logo {
-  text-decoration: none !important;
+  text-decoration: none !important; /* 밑줄 절대 금지 */
   color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
-.hero p {
-  margin: 0;
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-/* 3. 퀵 링크 */
+/* 퀵링크 - 한 화면에 3개 배치 */
 .quick-links {
   display: flex;
-  gap: 8px;
-  padding: 10px 0 20px;
-  margin-bottom: 10px;
-  justify-content: space-between;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: center;
 }
 
 .quick-links a {
   flex: 1;
-  padding: 10px 5px;
-  background-color: var(--card-bg);
+  padding: 12px 5px;
+  background: white;
   color: #1e3a8a;
   border-radius: 50px;
-  font-weight: bold;
-  font-size: 0.82rem;
   text-decoration: none;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-weight: bold;
+  font-size: 0.85rem;
   text-align: center;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-[data-theme='dark'] .quick-links a {
-  color: #f1f5f9;
-}
-
-@media (min-width: 768px) {
-  .quick-links { justify-content: center; gap: 20px; }
-  .quick-links a { flex: 0 0 auto; padding: 12px 25px; font-size: 0.95rem; }
-}
-
-/* 4. 카드 그리드 */
+/* 카드 그리드 */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
-  margin: 40px 0 60px;
+  margin: 30px 0;
 }
 
-.card {
-  background: var(--card-bg);
+.card, .notice-card {
+  background: white;
   border-radius: 20px;
-  padding: 24px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
   text-decoration: none;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
+  color: inherit;
 }
 
-.card p { color: var(--text-sub); }
-
-/* 5. 외부 서비스 버튼 */
-[data-theme='dark'] .mini-btn {
-  background-color: #334155;
-  color: #f1f5f9;
-}
-
-/* 6. 푸터 및 하단 서비스 */
-.bottom-services {
-  background-color: var(--card-bg);
-  border-top: 1px solid var(--border-color);
-  padding: 40px 0;
-}
-
-[data-theme='dark'] .bottom-services, [data-theme='dark'] .footer {
-  background-color: #020617;
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
 /* 급식 섹션 */
 .meal-card { border-left: 5px solid #ff9f43; }
-.meal-container { padding: 20px; background-color: var(--bg-color); border-radius: 12px; }
+.meal-container { padding: 15px; background: #f8fafc; border-radius: 12px; }
 .meal-item { 
-  background: var(--card-bg); padding: 6px 14px; border-radius: 50px; 
-  border: 1px solid var(--border-color); color: #3b82f6;
+  display: inline-block;
+  background: white; padding: 6px 12px; margin: 4px;
+  border-radius: 50px; border: 1px solid #e2e8f0;
+  font-size: 0.9rem; color: #1e3a8a; font-weight: 600;
 }
 
-/* 모달 */
+/* 하단 자주 쓰는 서비스 - 크기 정상화 */
+.bottom-services {
+  background: white;
+  padding: 30px 0;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.service-logo-large {
+  width: 120px; /* 크기 고정 */
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.mini-btn {
+  display: inline-block;
+  padding: 7px 12px;
+  margin: 3px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+/* 모달 - 확대 방지 및 내선번호용 */
 .modal-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex; justify-content: center; align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(4px);
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 2000;
 }
-
 .modal-content {
-  background: var(--card-bg);
-  color: var(--text-main);
-  padding: 30px; border-radius: 20px;
-  text-align: center; width: min(400px, 90%);
+  background: white; padding: 25px; border-radius: 20px; width: 90%; max-width: 350px; text-align: center;
 }
-
-/* [★수정] 내선번호 결과 카드 다크모드 대응 */
-[data-theme='dark'] .result-card .name { color: #60a5fa; }
-[data-theme='dark'] .result-card .highlight-num { color: #f1f5f9; }
