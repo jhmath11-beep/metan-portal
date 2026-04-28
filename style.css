@@ -383,3 +383,34 @@ body::before {
 .modal-close-btn:hover {
   background-color: #2563eb;
 }
+
+/* FAQ 카테고리 아이템 스타일 수정 */
+.cate-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 20px;          /* 내부 여백 */
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;        /* [수정] 마우스 커서를 손모양으로 변경 */
+  transition: all 0.2s;
+  display: flex;          /* 내용 중앙 정렬을 위해 추가 */
+  align-items: center;
+  justify-content: center;
+}
+
+/* [수정] 카테고리 버튼들 사이의 위아래 간격 벌리기 */
+.faq-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
+  gap: 16px;              /* [수정] 버튼 사이의 간격을 12px에서 16px로 확대 */
+  margin-top: 20px;       /* 제목과의 간격 */
+  margin-bottom: 10px;
+}
+
+.cate-item:hover {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #3b82f6;
+  transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+}
