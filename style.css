@@ -227,9 +227,9 @@ body::before {
 }
 
 .notice-list .date {
-  font-weight: 700;
-  color: #3b82f6;
-  min-width: 75px;
+  border-right: 2px solid #e5e7eb;
+  padding-right: 15px;
+  margin-right: 5px;
 }
 
 .notice-list .content {
@@ -485,8 +485,8 @@ body::before {
 }
 
 .phone-result-area {
-  background: #f9fafb;
-  border-radius: 12px;
+  background: #f8fafc; /* 조금 더 맑은 회색조 */
+  border: 1px dashed #cbd5e1; /* 점선 테두리로 '결과 영역'임을 표시 */
   padding: 20px;
   min-height: 80px;
   display: flex;
