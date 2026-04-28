@@ -70,30 +70,40 @@ body::before {
   opacity: 0.8;
 }
 
-/* 헤더 로고와 교표 정렬 */
+/* 1. 로고와 글자 정렬 - 제목이 주인공이 되도록 설정 */
 .header-logo {
-  display: inline-flex;    /* 이미지와 글자를 나란히 배치 */
-  align-items: center;     /* 수직 중앙 정렬 */
+  display: inline-flex;
+  align-items: center;    /* 수직 중앙 정렬 */
   justify-content: center;
-  gap: 15px;               /* 교표와 글자 사이 간격 */
+  gap: 12px;              /* 간격을 살짝 좁혀서 밀착감 부여 */
   text-decoration: none !important;
   color: white;
+  cursor: pointer;
+  word-break: keep-all;
+  
+  /* 제목 크기: 다시 존재감 있게 키움 */
+  font-size: 2.6rem; 
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
-/* 교표 이미지 스타일 */
+/* 2. 교표 이미지 - 제목 높이에 맞춰 자연스럽게 축소 */
 .header-symbol {
-  height: 50px;            /* 모바일 기준 교표 높이 */
-  width: auto;             /* 비율 유지 */
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); /* 살짝 입체감 부여 */
+  height: 50px;           /* [수정] 제목보다 살짝 작거나 비슷하게 조절 */
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
 }
 
-/* 노트북 / PC 화면 (768px 이상) */
+/* 노트북 / PC 화면 (768px 이상) 최적화 */
 @media (min-width: 768px) {
-  .header-symbol {
-    height: 70px;          /* PC에서는 교표를 좀 더 크게 */
-  }
   .header-logo {
-    gap: 20px;             /* PC에서는 간격도 조금 더 넓게 */
+    font-size: 3.8rem;    /* PC에서 제목을 시원하게 키움 */
+    gap: 20px;
+  }
+  
+  .header-symbol {
+    height: 70px;         /* [수정] PC에서도 제목의 위엄을 방해하지 않는 크기 */
   }
 }
 
