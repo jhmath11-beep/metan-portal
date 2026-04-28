@@ -18,6 +18,7 @@
       <section class="quick-links">
   <a href="#" onclick="toggleNotice(); return false;">공지사항(일정 등)</a>
   <a href="#" onclick="toggleFAQ(); return false;">무엇이든 물어보매(FAQ)</a>
+  <a href="#" onclick="togglePhone(); return false;">📞 내선번호 검색</a>
 </section>
 
   <section id="notice" class="notice-section" style="display: none;">
@@ -103,6 +104,29 @@
   </div>
 </section>
 
+    <section id="phone-section" class="notice-section" style="display: none;">
+  <div class="notice-card">
+    <div class="notice-header">
+      <span class="notice-icon">☎️</span>
+      <h3>교직원 내선번호 검색</h3>
+    </div>
+    
+    <div class="phone-search-box">
+  <input type="text" id="phone-input" placeholder="검색어를 입력하세요" onkeyup="searchPhone()">
+  <p class="search-example">
+    예: 성함 입력, 특별실 이름 입력(급식실, 방송실, 매여울포럼실, 시청각실, 성적처리실, 발간실, btl실, 미래정보실, 미술실, 민원면담실, 과학실, 컴퓨터실, 기술가정실, 음악실 등)
+  </p>
+</div>
+    
+    <div id="phone-result" class="phone-result-area">
+      <p class="search-guide">성함을 입력하시면 번호가 나타납니다.</p>
+    </div>
+
+    <div class="notice-footer">
+      <button class="close-footer-btn" onclick="togglePhone()">닫기</button>
+    </div>
+  </div>
+</section>
 
     <section class="card-grid">
       <a class="card" href="https://padlet.com/tsyche1/2026-erggj7epwnxe87w6" target="_blank">
