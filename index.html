@@ -19,11 +19,26 @@
 </header>
 
   <main class="wrap">
-    <section class="quick-links">
-      <a href="#" onclick="toggleNotice(); return false;">공지사항(일정 등)</a>
-      <a href="#" onclick="toggleFAQ(); return false;">무엇이든 물어보매(FAQ)</a>
-      <a href="#" onclick="togglePhone(); return false;">📞 내선번호 검색</a>
-    </section>
+    <!-- 메인 상단 퀵링크 섹션 수정 -->
+<section class="quick-links">
+  <a href="#" onclick="togglePhone(); return false;">
+    <div class="icon">📞</div>
+    <span>내선번호검색</span>
+  </a>
+  <!-- 신규 추가 메뉴: 전보점수 -->
+  <a href="https://maetan-app-advciqj4cw3xknxycq8evw.streamlit.app/" target="_blank">
+    <div class="icon">📍</div>
+    <span>청간전보년수조회</span>
+  </a>
+  <a href="#" onclick="toggleNotice(); return false;">
+    <div class="icon">📢</div>
+    <span>공지사항(일정 등)</span>
+  </a>
+  <a href="#" onclick="toggleFAQ(); return false;">
+    <div class="icon">❓</div>
+    <span>무엇이든 물어보매(FAQ)</span>
+  </a>
+</section>
 
     <section id="notice" class="notice-section" style="display: none;">
       <div class="notice-card">
