@@ -21,17 +21,18 @@
   <main class="wrap">
     <!-- 메인 상단 퀵링크 섹션 수정 -->
 <section class="quick-links">
-  <!-- 1. 공지사항 -->
-  <a href="#" onclick="toggleNotice(); return false;">공지사항(일정 등)</a>
-  
-  <!-- 2. 업무FAQ -->
-  <a href="#" onclick="toggleFAQ(); return false;">무엇이든 물어보매FAQ</a>
-  
-  <!-- 3. 내선번호 -->
-  <a href="#" onclick="togglePhone(); return false;">내선번호검색</a>
-  
-  <!-- 4. 전보점수 -->
-  <a href="https://maetan-app-advciqj4cw3xknxycq8evw.streamlit.app/" target="_blank">청간전보년수조회</a>
+  <a href="#" onclick="toggleNotice(); return false;">
+    <span class="icon">📢</span><span>공지사항</span>
+  </a>
+  <a href="#" onclick="toggleFAQ(); return false;">
+    <span class="icon">❓</span><span>업무FAQ</span>
+  </a>
+  <a href="#" onclick="togglePhone(); return false;">
+    <span class="icon">📞</span><span>내선번호</span>
+  </a>
+  <a href="https://maetan-app-advciqj4cw3xknxycq8evw.streamlit.app/" target="_blank">
+    <span class="icon">📍</span><span>전보점수</span>
+  </a>
 </section>
 
     <section id="notice" class="notice-section" style="display: none;">
