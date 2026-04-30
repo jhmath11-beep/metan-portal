@@ -135,48 +135,58 @@ body::before {
   }
 }
 
-/* 3. 퀵 링크 - 알약 형태 메뉴 (4개 최적화 버전) */
+/* 4열 알약 메뉴 최적화 버전 */
 .quick-links {
   display: flex;
-  gap: 6px;               /* 4개를 넣기 위해 간격을 살짝 좁힘 */
+  gap: 6px; 
   padding: 10px 0 20px;
   margin-bottom: 10px;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
-/* 퀵링크 개별 버튼 스타일 */
 .quick-links a {
-  flex: 1;                /* 4개가 가로 길이를 정확히 1/4씩 나눠 가짐 */
-  padding: 12px 2px;      /* 좌우 여백을 줄여서 4글자도 안 잘리게 함 */
+  flex: 1;
+  padding: 10px 2px; /* 상하 여백 조절 */
   background-color: #ffffff;
   color: #1e3a8a;
-  border-radius: 50px;    /* 알약 형태 유지 */
+  border-radius: 50px;
   font-weight: bold;
-  font-size: 0.72rem;     /* 4개를 위해 글자 크기 최적화 (약 11px) */
   text-decoration: none;
   border: 1px solid #e5e7eb;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  text-align: center;
-  white-space: nowrap;    /* 글자 줄바꿈 방지 */
+  
+  /* 아이콘과 글자를 세로로 정렬 */
   display: flex;
+  flex-direction: column; 
   align-items: center;
   justify-content: center;
-  letter-spacing: -0.8px; /* 자간을 좁혀 시각적 여유 확보 */
 }
 
-/* 노트북/PC 등 화면이 넓어질 때 설정 */
-@media (min-width: 768px) {
-  .quick-links {
-    justify-content: center; 
-    gap: 15px;               
-  }
+/* 아이콘 크기 및 간격 */
+.quick-links .icon {
+  font-size: 1.1rem; /* 아이콘 크기 */
+  margin-bottom: 3px; /* 아이콘과 글자 사이 간격 */
+}
 
+/* 글자 스타일 */
+.quick-links span:last-child {
+  font-size: 0.68rem; /* 4개 배치 시 글자가 안 잘리는 최적 크기 */
+  letter-spacing: -0.8px;
+  white-space: nowrap;
+}
+
+/* PC 버전 대응 */
+@media (min-width: 768px) {
+  .quick-links { justify-content: center; gap: 15px; }
   .quick-links a {
-    flex: 0 0 auto;          
-    padding: 12px 20px;      
-    font-size: 0.9rem;      
-    min-width: 140px;        
+    flex: 0 0 auto;
+    padding: 12px 25px;
+    min-width: 140px;
+    flex-direction: row; /* PC에서는 가로로 배치 */
+    gap: 8px;
   }
+  .quick-links .icon { margin-bottom: 0; font-size: 1.2rem; }
+  .quick-links span:last-child { font-size: 0.9rem; }
 }
 
 /* 4. 카드 그리드 */
